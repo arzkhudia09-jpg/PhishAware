@@ -672,6 +672,7 @@ section:nth-child(even) {
 }
 
 @media (max-width: 880px) {
+
     .nav-container,
     .container,
     .hero-content,
@@ -1191,25 +1192,48 @@ input[type='checkbox'] {
 }
 
 /* ==========================================
-   PROGRESS BAR
-   ========================================== */
+   QUIZ PROGRESS BAR
+========================================== */
 
 .progress-container {
     width: 100%;
-    height: 8px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 1rem;
-    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.progress-info {
+    color: var(--neon-green);
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .progress-bar {
+    width: 100%;
+    height: 14px;
+
+    background-color: rgba(255, 255, 255, 0.08);
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border-color);
+}
+
+.progress-fill {
+
+    width: 0%;
+
     height: 100%;
-    background: linear-gradient(90deg, var(--neon-green) 0%, var(--neon-blue) 100%);
-    border-radius: 4px;
-    transition: width 0.3s ease;
-    box-shadow: var(--shadow-glow);
+
+    background: linear-gradient(90deg,
+            var(--neon-green),
+            var(--neon-blue));
+
+    border-radius: 30px;
+
+    transition: width 0.4s ease-in-out;
+
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
 }
 
 /* ==========================================
@@ -1795,4 +1819,55 @@ footer {
 
 .opacity-75 {
     opacity: 0.75;
+}
+
+/* ==========================================
+   PRINT STYLES
+========================================== */
+
+@media print {
+
+    body * {
+        visibility: hidden;
+    }
+
+    .certificate-wrapper,
+    .certificate-wrapper * {
+        visibility: visible;
+    }
+
+    .certificate-wrapper {
+
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        background: white;
+
+        padding: 40px;
+    }
+
+    .certificate {
+
+        box-shadow: none !important;
+
+        border: 4px solid #daa520;
+
+        width: 100%;
+
+        max-width: 900px;
+    }
+
+    button,
+    nav,
+    footer {
+        display: none !important;
+    }
 }

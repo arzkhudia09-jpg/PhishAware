@@ -7,7 +7,6 @@
 // GLOBAL STATE
 // ==========================================
 
-let quizData = [];
 let currentQuestionIndex = 0;
 let score = 0;
 let selectedAnswers = [];
@@ -19,16 +18,13 @@ let quizStarted = false;
 
 document.addEventListener('DOMContentLoaded', function () {
   console.log('PhishAware Application Loaded');
-  
-  // Load quiz data
-  loadQuizData();
-  
+
   // Set up event listeners
   setupEventListeners();
-  
+
   // Initialize tooltips
   initializeTooltips();
-  
+
   // Smooth scroll for navigation
   setupSmoothScroll();
 });
@@ -36,112 +32,191 @@ document.addEventListener('DOMContentLoaded', function () {
 // ==========================================
 // QUIZ FUNCTIONALITY
 // ==========================================
-
-async function loadQuizData() {
-  try {
-    const response = await fetch('/static/data/quiz.json');
-    quizData = await response.json();
-    console.log('Quiz data loaded:', quizData);
-  } catch (error) {
-    console.error('Error loading quiz data:', error);
-  }
-}
-
 function startQuiz() {
-  const quizContainer = document.getElementById('quiz-container');
-  if (!quizContainer) return;
-  
-  if (quizData.length === 0) {
-    console.error('Quiz data not loaded');
+  console.log(quizData);
+  console.log("Start Quiz Clicked");
+
+  if (!quizData || !quizData.questions || quizData.questions.length === 0) {
+    console.error("Quiz data missing");
     return;
   }
-  
   quizStarted = true;
   currentQuestionIndex = 0;
   score = 0;
   selectedAnswers = [];
-  
-  quizContainer.innerHTML = '';
+
+  // Hide intro section
+  document.getElementById("quizHeader").style.display = "none";
+
+  // Show quiz section
+  document.getElementById("quizContent").style.display = "block";
+
+  // Show progress bar
+  document.getElementById("progressContainer").style.display = "block";
+
+  // Set total questions
+  document.getElementById("totalQuestions").textContent =
+    quizData.questions.length;
+
   displayQuestion();
 }
 
 function displayQuestion() {
-  const quizContainer = document.getElementById('quiz-container');
-  if (!quizContainer || !quizData[currentQuestionIndex]) return;
-  
-  const question = quizData[currentQuestionIndex];
-  const totalQuestions = quizData.length;
-  const progressPercentage = ((currentQuestionIndex + 1) / totalQuestions) * 100;
-  
-  let html = `
-    <div class="quiz-header">
-      <h2>Phishing Awareness Quiz</h2>
-      <div class="quiz-score">Question ${currentQuestionIndex + 1} of ${totalQuestions}</div>
-    </div>
-    
-    <div class="progress-container">
-      <div class="progress-bar" style="width: ${progressPercentage}%"></div>
-    </div>
-    
-    <div class="question-card">
-      <div class="question-text">${question.question}</div>
-      <div class="options">
-  `;
-  
-  question.options.forEach((option, index) => {
-    html += `
-      <label class="option">
-        <input type="radio" name="answer" value="${index}" class="answer-radio">
-        <span class="option-text">${option}</span>
-      </label>
-    `;
-  });
-  
-  html += `
-      </div>
-    </div>
-    
-    <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-      ${currentQuestionIndex > 0 ? '<button class="btn btn-secondary" onclick="previousQuestion()">← Previous</button>' : ''}
-      ${currentQuestionIndex < quizData.length - 1 
-        ? '<button class="btn btn-primary" onclick="nextQuestion()">Next →</button>' 
-        : '<button class="btn btn-primary" onclick="submitQuiz()">Submit Quiz</button>'}
-    </div>
-  `;
-  
-  quizContainer.innerHTML = html;
-  
-  // Restore previously selected answer if exists
-  if (selectedAnswers[currentQuestionIndex] !== undefined) {
-    const radios = document.querySelectorAll('.answer-radio');
-    radios[selectedAnswers[currentQuestionIndex]].checked = true;
-  }
-}
 
-function nextQuestion() {
-  const selectedRadio = document.querySelector('.answer-radio:checked');
-  if (!selectedRadio) {
-    showAlert('Please select an answer before proceeding.', 'warning');
+  const question = quizData.questions[currentQuestionIndex];
+
+  if (!question) {
+    console.error("Question not found");
     return;
   }
-  
-  selectedAnswers[currentQuestionIndex] = parseInt(selectedRadio.value);
-  
-  if (currentQuestionIndex < quizData.length - 1) {
-    currentQuestionIndex++;
-    displayQuestion();
-  }
-}
 
-function previousQuestion() {
-  if (currentQuestionIndex > 0) {
-    const selectedRadio = document.querySelector('.answer-radio:checked');
-    if (selectedRadio) {
-      selectedAnswers[currentQuestionIndex] = parseInt(selectedRadio.value);
+  // Update progress
+  document.getElementById("currentQuestion").textContent =
+    currentQuestionIndex + 1;
+
+  const progressPercent =
+    ((currentQuestionIndex + 1) / quizData.questions.length) * 100;
+
+  document.getElementById("progressFill").style.width =
+    progressPercent + "%";
+
+  // Set question text
+  document.getElementById("questionText").textContent =
+    question.question;
+
+  // Options container
+  const optionsContainer =
+    document.getElementById("optionsContainer");
+
+  optionsContainer.innerHTML = "";
+
+  // Generate options
+  question.options.forEach((option, index) => {
+
+    optionsContainer.innerHTML += `
+        <label class="option">
+            <input
+                type="radio"
+                name="answer"
+                value="${index}"
+                class="answer-radio"
+                onclick="selectAnswer(${index})"
+            >
+
+            <span class="option-text">
+                ${option}
+            </span>
+        </label>
+    `;
+  });
+};
+function selectAnswer(selectedIndex) {
+
+  // Save answer
+  selectedAnswers[currentQuestionIndex] = selectedIndex;
+
+  const question =
+    quizData.questions[currentQuestionIndex];
+
+  const optionLabels = document.querySelectorAll(".option");
+
+  optionLabels.forEach((label, index) => {
+
+    if (index === question.correct) {
+      label.classList.add("correct");
     }
-    
-    currentQuestionIndex--;
-    displayQuestion();
+
+    if (
+      index === selectedIndex &&
+      selectedIndex !== question.correct
+    ) {
+      label.classList.add("incorrect");
+    }
+  });
+
+  // Disable all radios
+  const radios =
+    document.querySelectorAll(".answer-radio");
+
+  radios.forEach(radio => {
+
+    radio.disabled = true;
+
+    const optionLabel = radio.closest(".option");
+
+    optionLabel.style.pointerEvents = "none";
+
+    optionLabel.style.opacity = "0.8";
+  });
+
+  // Show feedback
+  const feedbackBox =
+    document.getElementById("feedbackBox");
+
+  const feedbackContent =
+    document.getElementById("feedbackContent");
+
+  feedbackBox.style.display = "block";
+
+  // Correct answer
+  if (selectedIndex === question.correct) {
+
+    score++;
+
+    feedbackContent.innerHTML = `
+            <div class="alert alert-success">
+                <strong>✅ Correct!</strong><br><br>
+                ${question.explanation}
+            </div>
+        `;
+
+  } else {
+
+    feedbackContent.innerHTML = `
+            <div class="alert alert-danger">
+                <strong>❌ Incorrect!</strong><br><br>
+
+                Correct Answer:
+                ${question.options[question.correct]}
+
+                <br><br>
+
+                ${question.explanation}
+            </div>
+        `;
+  }
+
+  // Next button logic
+  const nextBtn =
+    document.getElementById("nextQuestionBtn");
+
+  if (currentQuestionIndex === quizData.questions.length - 1) {
+
+    nextBtn.textContent = "Show Results";
+
+    nextBtn.onclick = () => {
+
+      feedbackBox.style.display = "none";
+
+      submitQuiz();
+    };
+
+  } else {
+
+    nextBtn.textContent = "Next Question";
+
+    nextBtn.onclick = () => {
+
+      currentQuestionIndex++;
+
+      feedbackBox.style.display = "none";
+
+      // Reset next button
+      nextBtn.onclick = null;
+
+      // Load next question
+      displayQuestion();
+    };
   }
 }
 
@@ -151,28 +226,27 @@ function submitQuiz() {
     showAlert('Please select an answer before submitting.', 'warning');
     return;
   }
-  
+
   selectedAnswers[currentQuestionIndex] = parseInt(selectedRadio.value);
-  
+
   // Calculate score
   score = 0;
   selectedAnswers.forEach((answer, index) => {
-    if (answer === quizData[index].correctAnswer) {
+    if (answer === quizData.questions[index].correct) {
       score++;
     }
   });
-  
   displayQuizResults();
 }
 
 function displayQuizResults() {
   const quizContainer = document.getElementById('quiz-container');
   if (!quizContainer) return;
-  
-  const totalQuestions = quizData.length;
+
+  const totalQuestions = quizData.questions.length;
   const percentage = Math.round((score / totalQuestions) * 100);
   const passed = score >= Math.ceil(totalQuestions * 0.7); // 70% pass rate
-  
+
   let resultHTML = `
     <div class="quiz-header">
       <h2>Quiz Complete!</h2>
@@ -186,7 +260,7 @@ function displayQuizResults() {
         You answered ${score} out of ${totalQuestions} correctly
       </div>
   `;
-  
+
   if (passed) {
     resultHTML += `
       <div class="alert alert-success">
@@ -208,36 +282,36 @@ function displayQuizResults() {
       <button class="btn btn-secondary" onclick="location.reload()">Try Again</button>
     `;
   }
-  
+
   resultHTML += `
     <hr style="margin: 2rem 0; border: 1px solid var(--border-color);">
     <h3 style="color: var(--neon-green); margin-bottom: 1rem;">Review Your Answers:</h3>
     <div id="answer-review"></div>
     <button class="btn btn-secondary" style="margin-top: 2rem;" onclick="location.href='/'">Back to Home</button>
   `;
-  
+
   quizContainer.innerHTML = resultHTML;
-  
+
   // Display answer review
   const reviewContainer = document.getElementById('answer-review');
   if (reviewContainer) {
-    quizData.forEach((question, index) => {
-      const isCorrect = selectedAnswers[index] === question.correctAnswer;
+    quizData.questions.forEach((question, index) => {
+      const isCorrect = selectedAnswers[index] === question.correct;
       const selectedOption = question.options[selectedAnswers[index]];
-      const correctOption = question.options[question.correctAnswer];
-      
+      const correctOption = question.options[question.correct];
+
       reviewContainer.innerHTML += `
         <div class="card" style="margin-bottom: 1rem;">
           <div style="margin-bottom: 1rem;">
             <strong>Question ${index + 1}:</strong> ${question.question}
           </div>
           <div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">
-            ${isCorrect 
-              ? `<strong>✓ Correct!</strong> ${question.explanation}`
-              : `<strong>✗ Incorrect.</strong> You selected: "${selectedOption}"<br><br>
+            ${isCorrect
+          ? `<strong>✓ Correct!</strong> ${question.explanation}`
+          : `<strong>✗ Incorrect.</strong> You selected: "${selectedOption}"<br><br>
                  Correct answer: "${correctOption}"<br><br>
                  ${question.explanation}`
-            }
+        }
           </div>
         </div>
       `;
@@ -246,40 +320,111 @@ function displayQuizResults() {
 }
 
 function generateCertificate() {
-  const now = new Date();
-  const dateStr = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-  
-  const certificateHTML = `
-    <div class="certificate">
-      <div class="certificate-header">🔒 Certificate of Completion</div>
-      <p class="certificate-text">This is to certify that</p>
-      <div class="certificate-name">User</div>
-      <p class="certificate-text">
-        has successfully completed the<br>
-        <strong>PhishAware: Phishing Awareness Training</strong>
-      </p>
-      <p class="certificate-text">
-        Demonstrated proficiency in identifying phishing attacks<br>
-        and implementing security best practices.
-      </p>
-      <div class="certificate-date">Completed on: ${dateStr}</div>
-    </div>
-    <button class="btn btn-primary" onclick="printCertificate()">Print Certificate</button>
-  `;
-  
-  const quizContainer = document.getElementById('quiz-container');
-  if (quizContainer) {
-    const existingCert = quizContainer.querySelector('.certificate');
-    if (existingCert) {
-      existingCert.parentElement.innerHTML = certificateHTML;
-    } else {
-      quizContainer.innerHTML += certificateHTML;
-    }
+
+  const fullName = prompt(
+    "Enter your Full Name for the Certificate:"
+  );
+  document.title =
+    `${fullName}_PhishAware_Certificate`;
+
+  if (!fullName || fullName.trim() === "") {
+
+    showAlert(
+      "Certificate name is required.",
+      "warning"
+    );
+
+    return;
   }
+
+  const now = new Date();
+
+  const dateStr = now.toLocaleDateString(
+    'en-US',
+    {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }
+  );
+
+  const certificateHTML = `
+
+        <div class="certificate-wrapper">
+
+            <div class="certificate">
+
+                <div class="certificate-header">
+                    🔒 Certificate of Completion
+                </div>
+
+                <p class="certificate-text">
+                    This certifies that
+                </p>
+
+                <div class="certificate-name">
+                    ${fullName}
+                </div>
+
+                <p class="certificate-text">
+
+                    has successfully completed the
+
+                    <br><br>
+
+                    <strong>
+                        PhishAware:
+                        Phishing Awareness Training
+                    </strong>
+
+                </p>
+
+                <p class="certificate-text">
+
+                    Demonstrated knowledge in:
+
+                    <br>
+
+                    ✔ Phishing Detection  
+                    ✔ Email Spoofing Awareness  
+                    ✔ Credential Protection  
+                    ✔ Cybersecurity Best Practices
+
+                </p>
+
+                <div class="certificate-date">
+                    Completed on: ${dateStr}
+                </div>
+
+            </div>
+
+            <button
+                class="btn btn-primary mt-3"
+                onclick="printCertificate()"
+            >
+                🖨 Print Certificate
+            </button>
+
+        </div>
+    `;
+
+  const quizContainer =
+    document.getElementById("quiz-container");
+
+  quizContainer.innerHTML = certificateHTML;
+  document.querySelector(".certificate-wrapper")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
 }
 
 function printCertificate() {
+
   window.print();
+
+  setTimeout(() => {
+    document.title = "PhishAware";
+  }, 1000);
 }
 
 // ==========================================
@@ -288,10 +433,10 @@ function printCertificate() {
 
 function handlePhishingSubmit(event) {
   event.preventDefault();
-  
+
   // Don't store any data - just redirect
   console.log('Phishing simulation submitted - redirecting to awareness page');
-  
+
   // Redirect to awareness page
   window.location.href = '/awareness';
 }
@@ -303,44 +448,44 @@ function handlePhishingSubmit(event) {
 function checkURLSafety() {
   const urlInput = document.getElementById('url-input');
   const resultContainer = document.getElementById('url-result');
-  
+
   if (!urlInput || !resultContainer) return;
-  
+
   const url = urlInput.value.trim();
-  
+
   if (!url) {
     showAlert('Please enter a URL to check', 'warning');
     return;
   }
-  
+
   try {
     const urlObj = new URL(url);
     const domain = urlObj.hostname;
-    
+
     let riskScore = 0;
     let warnings = [];
-    
+
     // Check for suspicious patterns
     if (domain.includes('-')) {
       riskScore += 20;
       warnings.push('⚠ Domain contains hyphens (common in fake domains)');
     }
-    
+
     if (domain.includes('secure') || domain.includes('verify') || domain.includes('confirm')) {
       riskScore += 25;
       warnings.push('⚠ Domain contains urgency/security keywords');
     }
-    
+
     if (domain.length > 40) {
       riskScore += 15;
       warnings.push('⚠ Domain is unusually long');
     }
-    
+
     if (!urlObj.protocol.includes('https')) {
       riskScore += 30;
       warnings.push('⚠ Not using HTTPS (insecure connection)');
     }
-    
+
     // Check for common typosquatting patterns
     const commonDomains = ['google.com', 'facebook.com', 'instagram.com', 'amazon.com', 'paypal.com', 'apple.com'];
     commonDomains.forEach(common => {
@@ -349,10 +494,10 @@ function checkURLSafety() {
         warnings.push(`⚠ Possible typosquatting of ${common}`);
       }
     });
-    
+
     let riskLevel = 'LOW';
     let riskColor = 'var(--success-green)';
-    
+
     if (riskScore > 60) {
       riskLevel = 'HIGH';
       riskColor = 'var(--danger-red)';
@@ -360,7 +505,7 @@ function checkURLSafety() {
       riskLevel = 'MEDIUM';
       riskColor = 'var(--warning-orange)';
     }
-    
+
     let resultHTML = `
       <div class="card">
         <h3 style="color: ${riskColor}; margin-bottom: 1rem;">Risk Level: ${riskLevel}</h3>
@@ -389,7 +534,7 @@ function checkURLSafety() {
         </div>
       </div>
     `;
-    
+
     resultContainer.innerHTML = resultHTML;
   } catch (error) {
     showAlert('Invalid URL format. Please enter a valid URL.', 'danger');
@@ -403,19 +548,19 @@ function checkURLSafety() {
 function analyzeEmail() {
   const emailInput = document.getElementById('email-input');
   const resultContainer = document.getElementById('email-result');
-  
+
   if (!emailInput || !resultContainer) return;
-  
+
   const emailText = emailInput.value.trim();
-  
+
   if (!emailText) {
     showAlert('Please paste an email to analyze', 'warning');
     return;
   }
-  
+
   let suspiciousPatterns = [];
   let score = 0;
-  
+
   // Check for urgency words
   const urgencyWords = ['urgent', 'immediate', 'immediately', 'now', 'action required', 'act now', 'verify', 'confirm', 'click here', 'limited time', 'expires'];
   urgencyWords.forEach(word => {
@@ -424,7 +569,7 @@ function analyzeEmail() {
       score += 15;
     }
   });
-  
+
   // Check for generic greetings
   const genericGreetings = ['dear user', 'dear customer', 'dear valued customer', 'hello', 'to whom it may concern'];
   genericGreetings.forEach(greeting => {
@@ -433,7 +578,7 @@ function analyzeEmail() {
       score += 10;
     }
   });
-  
+
   // Check for suspicious requests
   const suspiciousRequests = ['verify account', 'confirm password', 'update information', 'click link', 'download attachment', 'provide credentials'];
   suspiciousRequests.forEach(request => {
@@ -442,7 +587,7 @@ function analyzeEmail() {
       score += 20;
     }
   });
-  
+
   // Check for spoofed domain indicators
   if (emailText.includes('@') && !emailText.toLowerCase().includes('noreply')) {
     const domainMatch = emailText.match(/@([\w.-]+)/);
@@ -454,7 +599,7 @@ function analyzeEmail() {
       }
     }
   }
-  
+
   // Check for threats
   const threats = ['suspended', 'locked', 'compromised', 'unauthorized access', 'illegal activity'];
   threats.forEach(threat => {
@@ -463,10 +608,10 @@ function analyzeEmail() {
       score += 20;
     }
   });
-  
+
   let riskLevel = 'LOW';
   let riskColor = 'var(--success-green)';
-  
+
   if (score > 60) {
     riskLevel = 'HIGH';
     riskColor = 'var(--danger-red)';
@@ -474,7 +619,7 @@ function analyzeEmail() {
     riskLevel = 'MEDIUM';
     riskColor = 'var(--warning-orange)';
   }
-  
+
   let resultHTML = `
     <div class="card">
       <h3 style="color: ${riskColor}; margin-bottom: 1rem;">Email Risk Level: ${riskLevel}</h3>
@@ -508,7 +653,7 @@ function analyzeEmail() {
       </ul>
     </div>
   `;
-  
+
   resultContainer.innerHTML = resultHTML;
 }
 
@@ -522,26 +667,26 @@ function setupEventListeners() {
   if (urlCheckBtn) {
     urlCheckBtn.addEventListener('click', checkURLSafety);
   }
-  
+
   const urlInput = document.getElementById('url-input');
   if (urlInput) {
     urlInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') checkURLSafety();
     });
   }
-  
+
   // Email Analyzer
   const emailAnalyzeBtn = document.getElementById('analyze-email-btn');
   if (emailAnalyzeBtn) {
     emailAnalyzeBtn.addEventListener('click', analyzeEmail);
   }
-  
+
   // Start Quiz
-  const startQuizBtn = document.getElementById('start-quiz-btn');
+  const startQuizBtn = document.getElementById("startQuizBtn");
   if (startQuizBtn) {
     startQuizBtn.addEventListener('click', startQuiz);
   }
-  
+
   // Phishing forms
   const phishingForms = document.querySelectorAll('.phishing-form');
   phishingForms.forEach(form => {
@@ -563,21 +708,21 @@ function showAlert(message, type = 'info') {
   alert.style.zIndex = '10000';
   alert.style.maxWidth = '400px';
   alert.style.animation = 'slideInRight 0.3s ease-out';
-  
+
   const iconMap = {
     success: '✓',
     danger: '✗',
     warning: '⚠',
     info: 'ℹ'
   };
-  
+
   alert.innerHTML = `
     <span class="alert-icon">${iconMap[type] || 'ℹ'}</span>
     <div>${message}</div>
   `;
-  
+
   document.body.appendChild(alert);
-  
+
   // Auto remove after 5 seconds
   setTimeout(() => {
     alert.style.animation = 'fadeOut 0.3s ease-out';
@@ -594,7 +739,7 @@ function setupSmoothScroll() {
         e.preventDefault();
         return;
       }
-      
+
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
@@ -620,10 +765,10 @@ function initializeTooltips() {
       tooltip.style.zIndex = '1000';
       tooltip.style.whiteSpace = 'nowrap';
       tooltip.style.marginTop = '5px';
-      
+
       this.appendChild(tooltip);
     });
-    
+
     element.addEventListener('mouseleave', function () {
       const tooltip = this.querySelector('.tooltip');
       if (tooltip) tooltip.remove();
@@ -642,7 +787,7 @@ function startSimulation(type) {
     'social': '/fake_social',
     'giveaway': '/fake_giveaway'
   };
-  
+
   if (simulationMap[type]) {
     window.location.href = simulationMap[type];
   }
@@ -658,7 +803,7 @@ function animateDashboardCards() {
     card.style.opacity = '0';
     card.style.transform = 'translateY(20px)';
     card.style.transition = 'all 0.5s ease';
-    
+
     setTimeout(() => {
       card.style.opacity = '1';
       card.style.transform = 'translateY(0)';

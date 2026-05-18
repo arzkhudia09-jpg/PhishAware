@@ -28,7 +28,7 @@
     </nav>
     <!-- Quiz Section -->
     <section class="quiz-section">
-        <div class="quiz-container">
+        <div class="quiz-container" id="quiz-container">
             <!-- Quiz Header -->
             <div class="quiz-header" id="quizHeader">
                 <h1>🧠 Phishing Awareness Quiz</h1>
@@ -94,9 +94,17 @@
                 purposes only.</p>
         </div>
     </footer>
+    <script type="application/json" id="quiz-data">
+    {{ quiz_data | tojson }}
+</script>
     <script>
-        // Quiz data will be passed from Flask
-        const quizData = JSON.parse('{{ quiz_data | safe }}');
+
+        const quizData = JSON.parse(
+            document.getElementById("quiz-data").textContent
+        );
+
+        console.log("QuizData:", quizData);
+
     </script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>

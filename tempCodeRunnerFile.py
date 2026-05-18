@@ -15,8 +15,7 @@ app = Flask(__name__, template_folder="templates", static_folder="static")
 app.config["SECRET_KEY"] = "phishaware-education-key-only"
 
 # Load quiz data
-BASE_DIR = Path(__file__).resolve().parent
-QUIZ_FILE = BASE_DIR / "data" / "quiz.json"
+QUIZ_FILE = Path("data/quiz.json")
 
 
 def load_quiz_data():
