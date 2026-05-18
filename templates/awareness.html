@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awareness - PhishAware</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit;">
+                    <span class="terminal-bracket">[</span>
+                    <span class="brand-text">PhishAware</span>
+                    <span class="terminal-bracket">]</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+                <li><a href="{{ url_for('simulations') }}" class="nav-link">Simulations</a></li>
+                <li><a href="{{ url_for('dashboard') }}" class="nav-link">Learn</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="awareness-section">
+        <div class="awareness-header success-banner">
+            <h1>🎓 Phishing Education Page</h1>
+            <p class="awareness-subtitle">
+                You just encountered a phishing simulation. Below is a breakdown of what happened and what to look for.
+            </p>
+        </div>
+
+        <div class="awareness-container">
+            <!-- Success Message -->
+            <div class="success-box">
+                <h2>✅ Simulation Complete</h2>
+                <p>
+                    Congratulations! You've completed a phishing awareness simulation. 
+                    Now let's break down what you experienced and what made it phishing.
+                </p>
+            </div>
+
+            <!-- Red Flags Analysis -->
+            <div class="analysis-section">
+                <h2 class="section-title danger">🚨 Red Flags Detected</h2>
+                <div class="red-flags-grid">
+                    {% for flag in data.red_flags %}
+                    <div class="red-flag-card">
+                        <div class="flag-icon">⚠️</div>
+                        <p>{{ flag }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- URL Comparison -->
+            <div class="url-comparison">
+                <h3>🔗 URL Analysis</h3>
+                <div class="url-comparison-grid">
+                    <div class="url-box legitimate">
+                        <h4>✅ LEGITIMATE</h4>
+                        <code>{{ data.real_url }}</code>
+                        <p class="url-note">Official domain you should use</p>
+                    </div>
+                    <div class="url-box phishing">
+                        <h4>❌ PHISHING</h4>
+                        <code>{{ data.fake_url }}</code>
+                        <p class="url-note">Suspicious domain used in simulation</p>
+                    </div>
+                </div>
+                <div class="url-explanation">
+                    <p>
+                        <strong>Why the fake URL is suspicious:</strong> 
+                        Phishing sites often use domains that are similar to legitimate ones but have extra words, 
+                        different TLDs (.xyz, .co instead of .com), or slight misspellings to trick users.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Threat Assessment -->
+            <div class="threat-assessment">
+                <h3>⚠️ Threat Level Assessment</h3>
+                <div class="threat-card {% if data.threat_level == 'CRITICAL' %}critical{% elif data.threat_level == 'HIGH' %}high{% else %}medium{% endif %}">
+                    <div class="threat-level-indicator">{{ data.threat_level }}</div>
+                    <p class="threat-explanation">{{ data.explanation }}</p>
+                </div>
+            </div>
+
+            <!-- Key Lessons -->
+            <div class="lessons-section">
+                <h2 class="section-title">📚 Key Lessons</h2>
+                <div class="lessons-grid">
+                    <div class="lesson-card">
+                        <div class="lesson-number">1</div>
+                        <h4>Always Verify URLs</h4>
+                        <p>Check the URL bar carefully. Phishers use domains that LOOK legitimate but aren't.</p>
+                    </div>
+                    <div class="lesson-card">
+                        <div class="lesson-number">2</div>
+                        <h4>Never Click Urgency Links</h4>
+                        <p>Phishing emails create artificial urgency. If urgent, go directly to the official website.</p>
+                    </div>
+                    <div class="lesson-card">
+                        <div class="lesson-number">3</div>
+                        <h4>Companies Don't Ask for Passwords</h4>
+                        <p>Legitimate organizations never ask for passwords via email or web forms.</p>
+                    </div>
+                    <div class="lesson-card">
+                        <div class="lesson-number">4</div>
+                        <h4>Check for Personalization</h4>
+                        <p>Real emails address you by name. Generic greetings are a red flag.</p>
+                    </div>
+                    <div class="lesson-card">
+                        <div class="lesson-number">5</div>
+                        <h4>Look for HTTPS</h4>
+                        <p>Real secure sites have a padlock icon and HTTPS. Always verify!</p>
+                    </div>
+                    <div class="lesson-card">
+                        <div class="lesson-number">6</div>
+                        <h4>Trust Your Instincts</h4>
+                        <p>If something feels off, it probably is. Take time to verify before acting.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prevention Strategies -->
+            <div class="prevention-section">
+                <h2 class="section-title">🛡️ How to Protect Yourself</h2>
+                <ul class="prevention-list">
+                    <li>
+                        <strong>Bookmark Official Sites:</strong> 
+                        Bookmark the official websites of organizations you use frequently. Go through bookmarks instead of clicking links.
+                    </li>
+                    <li>
+                        <strong>Use Multi-Factor Authentication:</strong> 
+                        Enable MFA on important accounts. Even if someone gets your password, they can't access your account.
+                    </li>
+                    <li>
+                        <strong>Use a Password Manager:</strong> 
+                        Password managers only fill passwords on legitimate sites, not phishing sites.
+                    </li>
+                    <li>
+                        <strong>Enable Email Filters:</strong> 
+                        Use email spam filters and train them to recognize phishing.
+                    </li>
+                    <li>
+                        <strong>Hover Over Links:</strong> 
+                        Before clicking, hover over links to see where they actually go.
+                    </li>
+                    <li>
+                        <strong>Report Suspicious Emails:</strong> 
+                        Report phishing emails to your organization's IT security team.
+                    </li>
+                    <li>
+                        <strong>Keep Software Updated:</strong> 
+                        Update your browser and operating system regularly for security patches.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="next-steps-section">
+                <h2 class="section-title">🎯 Next Steps</h2>
+                <div class="next-steps-grid">
+                    <a href="{{ url_for('simulations') }}" class="next-step-card">
+                        <div class="step-icon">🎮</div>
+                        <h4>Try Another Simulation</h4>
+                        <p>Test your skills with different phishing scenarios</p>
+                    </a>
+                    <a href="{{ url_for('quiz') }}" class="next-step-card">
+                        <div class="step-icon">📝</div>
+                        <h4>Take the Quiz</h4>
+                        <p>Test your phishing awareness knowledge</p>
+                    </a>
+                    <a href="{{ url_for('dashboard') }}" class="next-step-card">
+                        <div class="step-icon">📚</div>
+                        <h4>Learn More</h4>
+                        <p>Explore different attack types and tactics</p>
+                    </a>
+                    <a href="{{ url_for('tips') }}" class="next-step-card">
+                        <div class="step-icon">🔐</div>
+                        <h4>Security Tips</h4>
+                        <p>Get comprehensive security best practices</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Educational Disclaimer -->
+        <div class="disclaimer-box">
+            <h3>🔒 Security Notice</h3>
+            <p>
+                <strong>No data was collected or stored.</strong> 
+                PhishAware is designed for educational purposes only. 
+                Any information you entered in the simulation was not saved or transmitted anywhere.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 PhishAware - Cybersecurity Awareness Training Platform</p>
+            <p class="footer-disclaimer">Developed strictly for cybersecurity awareness and educational simulation purposes only.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

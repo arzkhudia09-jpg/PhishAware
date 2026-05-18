@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Dashboard - PhishAware</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit;">
+                    <span class="terminal-bracket">[</span>
+                    <span class="brand-text">PhishAware</span>
+                    <span class="terminal-bracket">]</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+                <li><a href="{{ url_for('simulations') }}" class="nav-link">Simulations</a></li>
+                <li><a href="{{ url_for('tips') }}" class="nav-link">Tips</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="dashboard-section">
+        <div class="section-header">
+            <h1>📊 Phishing Attack Types & Prevention</h1>
+            <p class="section-subtitle">Learn about different phishing attacks and how to defend yourself</p>
+        </div>
+
+        <!-- Attack Types Grid -->
+        <div class="dashboard-grid">
+            <!-- Spear Phishing -->
+            <div class="attack-card">
+                <div class="card-header">
+                    <h3>🎯 Spear Phishing</h3>
+                    <span class="threat-badge high">HIGH RISK</span>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Targeted phishing attacks aimed at specific individuals or organizations. 
+                        Attackers research their targets to make the attack more convincing.
+                    </p>
+                    <div class="attack-flow">
+                        <div class="flow-step">Attacker researches target</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step">Creates personalized email</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step">Victim trusts the message</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step">Click malicious link</div>
+                    </div>
+                    <h4>Prevention Methods:</h4>
+                    <ul class="prevention-methods">
+                        <li>Verify sender email address</li>
+                        <li>Don't click links from unknown sources</li>
+                        <li>Look for personalization consistency</li>
+                        <li>Enable MFA on important accounts</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Smishing -->
+            <div class="attack-card">
+                <div class="card-header">
+                    <h3>📱 Smishing (SMS Phishing)</h3>
+                    <span class="threat-badge high">HIGH RISK</span>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Phishing through text messages (SMS). Attackers send text messages 
+                        pretending to be from banks or services you use.
+                    </p>
+                    <div class="attack-example">
+                        <strong>Example:</strong>
+                        <p>"Your package delivery failed. Update info: [malicious-link.xyz]"</p>
+                    </div>
+                    <h4>Red Flags:</h4>
+                    <ul class="prevention-methods">
+                        <li>Unexpected SMS asking for action</li>
+                        <li>URL shorteners in SMS</li>
+                        <li>Urgent language and time pressure</li>
+                        <li>Requests for personal information</li>
+                    </ul>
+                    <h4>Prevention:</h4>
+                    <ul class="prevention-methods">
+                        <li>Don't click SMS links</li>
+                        <li>Call the organization directly</li>
+                        <li>Never reply with personal info</li>
+                        <li>Report suspicious SMS</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Vishing -->
+            <div class="attack-card">
+                <div class="card-header">
+                    <h3>☎️ Vishing (Voice Phishing)</h3>
+                    <span class="threat-badge high">HIGH RISK</span>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Social engineering through phone calls. Attackers call pretending to be 
+                        from IT support, banks, or other organizations to trick you.
+                    </p>
+                    <div class="attack-example">
+                        <strong>Example:</strong>
+                        <p>"Hi, this is IT support. We detected a security issue on your account. Please verify..."</p>
+                    </div>
+                    <h4>Red Flags:</h4>
+                    <ul class="prevention-methods">
+                        <li>Unsolicited calls asking for verification</li>
+                        <li>Pressure to act immediately</li>
+                        <li>Requests for passwords or PINs</li>
+                        <li>Phone numbers that look legitimate but aren't</li>
+                    </ul>
+                    <h4>Prevention:</h4>
+                    <ul class="prevention-methods">
+                        <li>Never share passwords over phone</li>
+                        <li>Verify by calling the organization back</li>
+                        <li>Legitimate IT won't call unsolicited</li>
+                        <li>Hang up and call directly</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- QR Code Phishing -->
+            <div class="attack-card">
+                <div class="card-header">
+                    <h3>📲 QR Code Phishing</h3>
+                    <span class="threat-badge medium">MEDIUM RISK</span>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Malicious QR codes that direct users to phishing websites when scanned. 
+                        Often used in physical spaces or printed materials.
+                    </p>
+                    <div class="attack-example">
+                        <strong>Example:</strong>
+                        <p>QR code on poster directing to fake WiFi login page</p>
+                    </div>
+                    <h4>Red Flags:</h4>
+                    <ul class="prevention-methods">
+                        <li>QR codes from unknown sources</li>
+                        <li>QR codes covering legitimate ones</li>
+                        <li>Codes with no context or explanation</li>
+                        <li>Suspicious URLs after scanning</li>
+                    </ul>
+                    <h4>Prevention:</h4>
+                    <ul class="prevention-methods">
+                        <li>Check destination before scanning</li>
+                        <li>Be wary of QR codes in public</li>
+                        <li>Use QR code preview apps</li>
+                        <li>Only scan known, trusted codes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Email Spoofing -->
+            <div class="attack-card">
+                <div class="card-header">
+                    <h3>✉️ Email Spoofing</h3>
+                    <span class="threat-badge high">HIGH RISK</span>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Forging email headers to make emails appear to come from a trusted source. 
+                        The email looks like it's from your boss, bank, or trusted organization.
+                    </p>
+                    <div class="attack-example">
+                        <strong>Real sender:</strong> attacker@evil.com<br>
+                        <strong>Display name:</strong> CEO@yourcompany.com
+                    </div>
+                    <h4>Red Flags:</h4>
+                    <ul class="prevention-methods">
+                        <li>Check actual sender email address</li>
+                        <li>Generic greetings</li>
+                        <li>Grammar and spelling errors</li>
+                        <li>Unusual requests or urgency</li>
+                    </ul>
+                    <h4>Prevention:</h4>
+                    <ul class="prevention-methods">
+                        <li>Always check sender email address</li>
+                        <li>Use email authentication (SPF, DKIM)</li>
+                        <li>Verify through other channels</li>
+                        <li>Enable email filters</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Business Email Compromise (BEC) -->
+            <div class="attack-card">
+                <div class="card-header">
+                    <h3>💼 Business Email Compromise (BEC)</h3>
+                    <span class="threat-badge critical">CRITICAL RISK</span>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Sophisticated attack targeting businesses. Compromises executive email accounts 
+                        or spoofs them to request money transfers or sensitive information.
+                    </p>
+                    <div class="attack-example">
+                        <strong>Example:</strong>
+                        <p>Email from CEO: "Transfer $50,000 to this account for urgent business deal"</p>
+                    </div>
+                    <div class="attack-flow">
+                        <div class="flow-step">Attacker researches company</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step">Compromises/spoofs executive email</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step">Requests money transfer</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step">Millions stolen before detection</div>
+                    </div>
+                    <h4>Prevention:</h4>
+                    <ul class="prevention-methods">
+                        <li>Require dual approval for transfers</li>
+                        <li>Verify requests through other channels</li>
+                        <li>Train employees on these tactics</li>
+                        <li>Implement email authentication</li>
+                        <li>Use MFA on executive accounts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- General Phishing Statistics -->
+        <div class="statistics-section">
+            <h2 class="section-title">📈 Phishing Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">3.4B</div>
+                    <p>phishing emails sent daily</p>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">376B</div>
+                    <p>phishing emails yearly</p>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">1 in 99</div>
+                    <p>emails is phishing</p>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">45%</div>
+                    <p>contain malware</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2>Ready to Test Your Knowledge?</h2>
+            <div class="cta-buttons">
+                <a href="{{ url_for('simulations') }}" class="btn btn-primary btn-lg">
+                    Try Simulations
+                </a>
+                <a href="{{ url_for('quiz') }}" class="btn btn-secondary btn-lg">
+                    Take Quiz
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 PhishAware - Cybersecurity Awareness Training Platform</p>
+            <p class="footer-disclaimer">Developed strictly for cybersecurity awareness and educational simulation purposes only.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

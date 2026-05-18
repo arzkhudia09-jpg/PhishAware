@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate - PhishAware</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit;">
+                    <span class="terminal-bracket">[</span>
+                    <span class="brand-text">PhishAware</span>
+                    <span class="terminal-bracket">]</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+                <li><a href="{{ url_for('quiz') }}" class="nav-link">Quiz</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Certificate Section -->
+    <section class="certificate-section">
+        <div class="certificate-container">
+            <!-- Certificate Document -->
+            <div class="certificate" id="certificate">
+                <div class="certificate-border">
+                    <div class="certificate-content">
+                        <div class="certificate-header">
+                            <span class="certificate-icon">🏆</span>
+                            <h1>Certificate of Achievement</h1>
+                            <span class="certificate-icon">🛡️</span>
+                        </div>
+
+                        <div class="certificate-body">
+                            <p class="certificate-intro">This is to certify that</p>
+                            <div class="certificate-name">
+                                <input 
+                                    type="text" 
+                                    id="certificateName" 
+                                    class="certificate-input" 
+                                    placeholder="Enter your name"
+                                    maxlength="50"
+                                >
+                            </div>
+                            <p class="certificate-text">
+                                Has successfully completed the
+                            </p>
+                            <h2 class="certificate-title">PhishAware Phishing Awareness Training</h2>
+                            <p class="certificate-text">
+                                And demonstrated proficiency in identifying and preventing phishing attacks,
+                                understanding cybersecurity threats, and applying best practices for
+                                protecting personal and organizational information.
+                            </p>
+
+                            <div class="certificate-details">
+                                <p>
+                                    <strong>Completion Date:</strong> 
+                                    <span id="completionDate"></span>
+                                </p>
+                                <p>
+                                    <strong>Certificate ID:</strong> 
+                                    <span id="certificateId"></span>
+                                </p>
+                            </div>
+
+                            <div class="certificate-footer">
+                                <p class="certificate-seal">✓ Verified Training</p>
+                                <p class="certificate-message">
+                                    Keep this certificate as proof of your cybersecurity awareness training.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="certificate-actions">
+                <button class="btn btn-primary btn-lg" onclick="downloadCertificate()">
+                    📥 Download Certificate
+                </button>
+                <button class="btn btn-secondary btn-lg" onclick="printCertificate()">
+                    🖨️ Print Certificate
+                </button>
+                <a href="{{ url_for('index') }}" class="btn btn-tertiary btn-lg">
+                    ← Back to Home
+                </a>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="certificate-next-steps">
+                <h3>🎯 What's Next?</h3>
+                <div class="next-steps-grid">
+                    <div class="next-step-box">
+                        <h4>📚 Continue Learning</h4>
+                        <p>Return to the educational dashboard to learn more about different attack types.</p>
+                        <a href="{{ url_for('dashboard') }}" class="small-btn">Learn More</a>
+                    </div>
+                    <div class="next-step-box">
+                        <h4>🎮 Practice More</h4>
+                        <p>Test your skills with additional phishing simulations.</p>
+                        <a href="{{ url_for('simulations') }}" class="small-btn">Try Simulations</a>
+                    </div>
+                    <div class="next-step-box">
+                        <h4>🧠 Take Quiz Again</h4>
+                        <p>Retake the quiz to improve your score and reinforce your knowledge.</p>
+                        <a href="{{ url_for('quiz') }}" class="small-btn">Retake Quiz</a>
+                    </div>
+                    <div class="next-step-box">
+                        <h4>🔐 Security Tips</h4>
+                        <p>Review best practices and security recommendations.</p>
+                        <a href="{{ url_for('tips') }}" class="small-btn">View Tips</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sharing Section -->
+            <div class="certificate-sharing">
+                <h3>📢 Share Your Achievement</h3>
+                <p>Tell others about your cybersecurity awareness achievement!</p>
+                <div class="sharing-buttons">
+                    <button class="share-btn" onclick="shareOnTwitter()">
+                        𝕏 Share on Twitter
+                    </button>
+                    <button class="share-btn" onclick="shareOnLinkedIn()">
+                        💼 Share on LinkedIn
+                    </button>
+                </div>
+            </div>
+
+            <!-- Educational Note -->
+            <div class="certificate-note">
+                <p class="note-title">📜 About This Certificate</p>
+                <p>
+                    This certificate acknowledges your completion of the PhishAware phishing awareness training program.
+                    It demonstrates your knowledge of phishing detection, social engineering tactics, and cybersecurity best practices.
+                    Share this certificate to show your commitment to cybersecurity awareness.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 PhishAware - Cybersecurity Awareness Training Platform</p>
+            <p class="footer-disclaimer">Developed strictly for cybersecurity awareness and educational simulation purposes only.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        // Initialize certificate with date and ID
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('completionDate').textContent = dateStr;
+            
+            // Generate certificate ID
+            const certId = 'PHISHAWARE-' + Date.now();
+            document.getElementById('certificateId').textContent = certId;
+        });
+
+        function downloadCertificate() {
+            const name = document.getElementById('certificateName').value || 'PhishAware Learner';
+            alert('Certificate download feature would work in production. Certificate for: ' + name);
+        }
+
+        function printCertificate() {
+            window.print();
+        }
+
+        function shareOnTwitter() {
+            const text = "I just completed the PhishAware Phishing Awareness Training! 🎓🛡️ Test your cybersecurity skills at PhishAware.";
+            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text), '_blank');
+        }
+
+        function shareOnLinkedIn() {
+            const text = "I completed the PhishAware Phishing Awareness Training - a comprehensive cybersecurity education platform.";
+            window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank');
+        }
+    </script>
+</body>
+</html>

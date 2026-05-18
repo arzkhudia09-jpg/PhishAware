@@ -1,0 +1,124 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "You receive an email from 'paypa1-security.com' asking you to verify your account. What should you do?",
+      "options": [
+        "Click the link and verify your account immediately",
+        "Reply to the email with your password",
+        "Go directly to the official PayPal website without clicking the link",
+        "Forward it to your friends"
+      ],
+      "correct": 2,
+      "explanation": "Always go directly to the official website by typing the URL yourself. This email is likely phishing - notice 'paypa1' uses the number 1 instead of the letter 'l'. Never click links in suspicious emails."
+    },
+    {
+      "id": 2,
+      "question": "What is a major red flag in a phishing email?",
+      "options": [
+        "Professional formatting",
+        "Generic greeting like 'Dear User' instead of your name",
+        "Offering technical support",
+        "Using company logos"
+      ],
+      "correct": 1,
+      "explanation": "Legitimate companies personalize emails with your name. Generic greetings are a common phishing tactic. Always look for personalization and proper grammar."
+    },
+    {
+      "id": 3,
+      "question": "Which URL is most likely to be legitimate?",
+      "options": [
+        "https://secure-amazon-verify.xyz",
+        "https://amazon.com",
+        "http://amazon-security-update.info",
+        "https://amazone.secure.verify.com"
+      ],
+      "correct": 1,
+      "explanation": "amazon.com is the official domain. Phishing sites often add extra words or use suspicious TLDs (.xyz, .info). Always check the actual domain name."
+    },
+    {
+      "id": 4,
+      "question": "What does HTTPS indicate?",
+      "options": [
+        "It's definitely a safe website",
+        "The connection is encrypted and secure",
+        "The website is owned by a large company",
+        "You can share any password on the site"
+      ],
+      "correct": 1,
+      "explanation": "HTTPS encrypts data between you and the website. However, phishers can also use HTTPS, so always verify the domain name AND check for the padlock icon."
+    },
+    {
+      "id": 5,
+      "question": "Your bank emails you saying 'URGENT: Your account will be suspended in 2 hours unless you click here.' This is most likely:",
+      "options": [
+        "A legitimate urgent security alert",
+        "Phishing - creating false urgency to pressure you",
+        "A system maintenance notice",
+        "Spam you should forward"
+      ],
+      "correct": 1,
+      "explanation": "Banks rarely create artificial urgency in emails. If you're concerned, call your bank directly. Phishers use urgency to bypass your critical thinking."
+    },
+    {
+      "id": 6,
+      "question": "What should you NEVER do when receiving a suspicious email?",
+      "options": [
+        "Report it as spam",
+        "Delete it immediately",
+        "Click any links or download attachments",
+        "Forward it to IT security"
+      ],
+      "correct": 2,
+      "explanation": "Never click links or download attachments from suspicious emails. These often contain malware. Instead, report it and delete it."
+    },
+    {
+      "id": 7,
+      "question": "Which practice helps prevent phishing attacks?",
+      "options": [
+        "Using the same password everywhere",
+        "Clicking links from emails",
+        "Using Multi-Factor Authentication (MFA)",
+        "Sharing passwords with IT staff"
+      ],
+      "correct": 2,
+      "explanation": "Multi-Factor Authentication adds an extra security layer. Even if phishers get your password, they can't access your account without the second factor (like a phone code)."
+    },
+    {
+      "id": 8,
+      "question": "You win a free iPhone in a giveaway you never entered. The site asks for your password to claim it. What's happening?",
+      "options": [
+        "You're lucky and should claim it immediately",
+        "This is likely a scam collecting personal information",
+        "The website is definitely legitimate",
+        "You should share this with others"
+      ],
+      "correct": 1,
+      "explanation": "If it seems too good to be true, it probably is. Legitimate prizes never require passwords. This is a common scam to harvest credentials."
+    },
+    {
+      "id": 9,
+      "question": "What is Email Spoofing?",
+      "options": [
+        "When your email account gets too many messages",
+        "When someone forges an email to appear from a trusted source",
+        "When you accidentally delete an email",
+        "When your email provider goes down"
+      ],
+      "correct": 1,
+      "explanation": "Email spoofing makes an email look like it's from a trusted source (like your bank) when it's actually from an attacker. Always verify the actual sender email address."
+    },
+    {
+      "id": 10,
+      "question": "Best practice for creating strong passwords:",
+      "options": [
+        "Use 'password123' - easy to remember",
+        "Use your birthday and name",
+        "Use unique, complex passwords with 12+ characters including symbols",
+        "Use the same password for all accounts"
+      ],
+      "correct": 2,
+      "explanation": "Strong passwords have uppercase, lowercase, numbers, and symbols - at least 12 characters. Use a password manager to store them securely and use different passwords for each account."
+    }
+  ]
+}

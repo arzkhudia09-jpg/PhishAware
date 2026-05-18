@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulations - PhishAware</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit;">
+                    <span class="terminal-bracket">[</span>
+                    <span class="brand-text">PhishAware</span>
+                    <span class="terminal-bracket">]</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+                <li><a href="{{ url_for('dashboard') }}" class="nav-link">Learn</a></li>
+                <li><a href="{{ url_for('tips') }}" class="nav-link">Tips</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="simulations-section">
+        <div class="section-header">
+            <h1>Phishing Simulations</h1>
+            <p class="section-subtitle">Choose a simulation to begin. Remember: This is a safe, educational environment.</p>
+        </div>
+
+        <div class="simulations-grid">
+            <!-- Fake Bank Simulation -->
+            <div class="simulation-card">
+                <div class="card-header">
+                    <div class="card-icon">🏦</div>
+                    <span class="difficulty-badge difficulty-medium">MEDIUM</span>
+                </div>
+                <h3 class="card-title">Fake Bank Login</h3>
+                <p class="card-description">
+                    A realistic phishing attempt impersonating a bank. Look for suspicious URLs, urgent language, and requests for sensitive information.
+                </p>
+                <div class="card-details">
+                    <span class="threat-level high">HIGH RISK</span>
+                    <span class="time-estimate">⏱ 2-3 min</span>
+                </div>
+                <div class="card-skills">
+                    <span class="skill-tag">URL Analysis</span>
+                    <span class="skill-tag">Domain Verification</span>
+                </div>
+                <a href="{{ url_for('simulate_bank') }}" class="btn btn-danger btn-block">
+                    Start Simulation →
+                </a>
+            </div>
+
+            <!-- Fake Social Media Simulation -->
+            <div class="simulation-card">
+                <div class="card-header">
+                    <div class="card-icon">📱</div>
+                    <span class="difficulty-badge difficulty-hard">HARD</span>
+                </div>
+                <h3 class="card-title">Fake Social Media</h3>
+                <p class="card-description">
+                    Social media account takeover attempt. Detect credential harvesting, fake security alerts, and account suspension threats.
+                </p>
+                <div class="card-details">
+                    <span class="threat-level high">HIGH RISK</span>
+                    <span class="time-estimate">⏱ 2-3 min</span>
+                </div>
+                <div class="card-skills">
+                    <span class="skill-tag">Urgency Detection</span>
+                    <span class="skill-tag">Social Engineering</span>
+                </div>
+                <a href="{{ url_for('simulate_social') }}" class="btn btn-danger btn-block">
+                    Start Simulation →
+                </a>
+            </div>
+
+            <!-- Fake Giveaway Scam -->
+            <div class="simulation-card">
+                <div class="card-header">
+                    <div class="card-icon">🎁</div>
+                    <span class="difficulty-badge difficulty-easy">EASY</span>
+                </div>
+                <h3 class="card-title">Fake Giveaway</h3>
+                <p class="card-description">
+                    A common giveaway scam. Learn to identify "too good to be true" offers, personal data collection, and prize claiming traps.
+                </p>
+                <div class="card-details">
+                    <span class="threat-level critical">CRITICAL</span>
+                    <span class="time-estimate">⏱ 2-3 min</span>
+                </div>
+                <div class="card-skills">
+                    <span class="skill-tag">Scam Recognition</span>
+                    <span class="skill-tag">Data Privacy</span>
+                </div>
+                <a href="{{ url_for('simulate_giveaway') }}" class="btn btn-danger btn-block">
+                    Start Simulation →
+                </a>
+            </div>
+        </div>
+
+        <!-- Instructions Box -->
+        <div class="instructions-box">
+            <h3>📋 How to Use These Simulations</h3>
+            <ol class="instructions-list">
+                <li><strong>Read carefully:</strong> Examine every detail of the page - URLs, branding, language, and design</li>
+                <li><strong>Look for red flags:</strong> Urgency, suspicious domains, generic greetings, password requests</li>
+                <li><strong>Make your decision:</strong> Decide if you would interact with this or recognize it as phishing</li>
+                <li><strong>Submit the form:</strong> Choosing to continue will redirect you to an educational awareness page</li>
+                <li><strong>Learn the lesson:</strong> The awareness page explains what red flags were present and why it's phishing</li>
+            </ol>
+        </div>
+
+        <!-- Additional Resources -->
+        <div class="resources-section">
+            <h3>Additional Resources</h3>
+            <div class="resources-grid">
+                <a href="{{ url_for('dashboard') }}" class="resource-card">
+                    <span class="resource-icon">📚</span>
+                    <h4>Educational Dashboard</h4>
+                    <p>Learn about different phishing attack types</p>
+                </a>
+                <a href="{{ url_for('tips') }}" class="resource-card">
+                    <span class="resource-icon">🛡️</span>
+                    <h4>Security Tips</h4>
+                    <p>Best practices to protect yourself</p>
+                </a>
+                <a href="{{ url_for('quiz') }}" class="resource-card">
+                    <span class="resource-icon">📝</span>
+                    <h4>Test Your Knowledge</h4>
+                    <p>Take the phishing awareness quiz</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 PhishAware - Cybersecurity Awareness Training Platform</p>
+            <p class="footer-disclaimer">Developed strictly for cybersecurity awareness and educational simulation purposes only.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

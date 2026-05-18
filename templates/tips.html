@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Tips - PhishAware</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit;">
+                    <span class="terminal-bracket">[</span>
+                    <span class="brand-text">PhishAware</span>
+                    <span class="terminal-bracket">]</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+                <li><a href="{{ url_for('dashboard') }}" class="nav-link">Learn</a></li>
+                <li><a href="{{ url_for('simulations') }}" class="nav-link">Simulations</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="tips-section">
+        <div class="section-header">
+            <h1>🛡️ Security Best Practices</h1>
+            <p class="section-subtitle">Essential tips to protect yourself from phishing and cyber threats</p>
+        </div>
+
+        <!-- Email & Phishing Tips -->
+        <div class="tips-category">
+            <h2 class="category-title">📧 Email & Phishing Protection</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">🔍</div>
+                    <h3>Verify Sender Domains</h3>
+                    <p>
+                        Always check the actual sender email address, not just the display name. 
+                        Hover over email addresses to reveal the real sender. Be wary of domains that 
+                        don't match the organization name.
+                    </p>
+                    <div class="tip-example">
+                        ❌ Wrong: support@apple.security-update.com<br>
+                        ✅ Right: support@apple.com
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🔗</div>
+                    <h3>Never Click Suspicious Links</h3>
+                    <p>
+                        Don't click links in emails, even if they look official. Instead, go directly to 
+                        the website by typing the URL yourself or using a bookmark. Hover over links to 
+                        see where they actually go.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">⚠️</div>
+                    <h3>Beware of Urgency</h3>
+                    <p>
+                        Phishing emails often create artificial urgency: "Your account will be deleted", 
+                        "Verify immediately", "Urgent action required". Legitimate organizations rarely 
+                        use such tactics. Take time to think.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">📎</div>
+                    <h3>Don't Download Unexpected Attachments</h3>
+                    <p>
+                        Never download attachments from unknown sources. Even if they appear to come 
+                        from trusted contacts (whose accounts might be compromised), be cautious. 
+                        Attachments often contain malware.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🔤</div>
+                    <h3>Check Spelling & Grammar</h3>
+                    <p>
+                        Legitimate organizations proofread their emails. Phishing emails often contain 
+                        typos, grammatical errors, or awkward phrasing. If an email looks poorly written, 
+                        it's likely phishing.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">👤</div>
+                    <h3>Look for Personalization</h3>
+                    <p>
+                        Legitimate emails address you by name and reference specific information about 
+                        you. Generic greetings like "Dear User" or "Dear Valued Customer" are red flags 
+                        for phishing.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Password & Authentication Tips -->
+        <div class="tips-category">
+            <h2 class="category-title">🔐 Password & Authentication Security</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">🔑</div>
+                    <h3>Create Strong, Unique Passwords</h3>
+                    <p>
+                        Use passwords with at least 12 characters including uppercase, lowercase, 
+                        numbers, and symbols. Never reuse passwords across accounts. Different passwords 
+                        for each account limits damage if one is compromised.
+                    </p>
+                    <div class="tip-example">
+                        ❌ Wrong: password123, john@1995<br>
+                        ✅ Right: Tr0pic@l$Sunset#2024!Secure
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">📱</div>
+                    <h3>Enable Multi-Factor Authentication (MFA)</h3>
+                    <p>
+                        MFA adds an extra security layer. Even if someone gets your password, they can't 
+                        access your account without the second factor (phone code, biometric, security key). 
+                        Enable MFA on all important accounts.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">💾</div>
+                    <h3>Use a Password Manager</h3>
+                    <p>
+                        Password managers securely store your passwords and can generate strong ones. 
+                        They only fill passwords on legitimate sites, not phishing sites. This significantly 
+                        reduces phishing success. Examples: Bitwarden, 1Password, LastPass.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🚫</div>
+                    <h3>Never Share Your Password</h3>
+                    <p>
+                        No legitimate organization will ask for your password via email, phone, or web form. 
+                        IT support won't ask for your password. Real companies have other ways to verify your 
+                        identity. Anyone asking for a password is suspicious.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🔄</div>
+                    <h3>Change Passwords Regularly</h3>
+                    <p>
+                        Change passwords for important accounts every 90 days. If you suspect a breach, 
+                        change immediately. Monitor accounts for suspicious activity and change passwords 
+                        of any compromised accounts.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🔑</div>
+                    <h3>Use Security Keys When Possible</h3>
+                    <p>
+                        Hardware security keys (like YubiKey) are the most secure form of 2FA. They work 
+                        only with the legitimate website, so phishing sites can't use them. They're immune 
+                        to most phishing attacks.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Browsing & Website Security -->
+        <div class="tips-category">
+            <h2 class="category-title">🌐 Browsing & Website Security</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">🔒</div>
+                    <h3>Look for HTTPS & Padlock</h3>
+                    <p>
+                        Always verify the padlock icon (🔒) in the address bar. The URL should start with 
+                        HTTPS (not HTTP). This means the connection is encrypted. However, phishers can also 
+                        use HTTPS, so always verify the domain name too!
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">📍</div>
+                    <h3>Check the Full URL</h3>
+                    <p>
+                        Read the complete URL in the address bar, not just what's visible. Phishers use 
+                        similar-looking URLs like "amaz0n.com" or "paypa1.com". Click on the address bar 
+                        to see the full URL.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🔖</div>
+                    <h3>Bookmark Important Sites</h3>
+                    <p>
+                        Bookmark the official websites you use regularly (bank, email, social media). 
+                        Access them through bookmarks instead of clicking links. This ensures you always 
+                        go to the legitimate site.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🛡️</div>
+                    <h3>Keep Browser Updated</h3>
+                    <p>
+                        Update your browser regularly to patch security vulnerabilities. Many phishing 
+                        attacks exploit outdated browsers. Enable automatic updates for your browser, 
+                        operating system, and software.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🧩</div>
+                    <h3>Use Security Extensions</h3>
+                    <p>
+                        Browser extensions can help identify phishing sites. Try uBlock Origin, 
+                        Bitwarden, or browser-built security features. These can block malicious 
+                        sites and warn you about phishing attempts.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">⚙️</div>
+                    <h3>Be Careful with Auto-Fill</h3>
+                    <p>
+                        Be careful with browser auto-fill features. While convenient, they can sometimes 
+                        fill credentials on phishing sites. Verify the URL before allowing auto-fill, and 
+                        use password managers instead for sensitive information.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Engineering & General Security -->
+        <div class="tips-category">
+            <h2 class="category-title">👥 Social Engineering & General Security</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">📞</div>
+                    <h3>Verify Requests Through Different Channels</h3>
+                    <p>
+                        If someone claims to be from your organization asking for information, verify 
+                        through a different channel. If they email, call them. If they call, email them. 
+                        This confirms they are who they claim to be.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">😌</div>
+                    <h3>Trust Your Instincts</h3>
+                    <p>
+                        If something feels wrong, it probably is. You don't need to respond immediately. 
+                        Take time to verify. It's better to miss an urgent email than to fall for phishing. 
+                        Your gut feeling is often right.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">👁️</div>
+                    <h3>Be Cautious in Public WiFi</h3>
+                    <p>
+                        Avoid accessing sensitive accounts on public WiFi. Attackers can intercept data on 
+                        public networks. If you must, use a VPN to encrypt your connection. Never access 
+                        banking or email on unsecured WiFi.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🚨</div>
+                    <h3>Report Phishing & Suspicious Activity</h3>
+                    <p>
+                        Report phishing emails to your IT security team and the organization being impersonated. 
+                        Report phishing to anti-phishing organizations. This helps protect others and improves 
+                        defenses against similar attacks.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">📚</div>
+                    <h3>Stay Educated</h3>
+                    <p>
+                        Keep learning about cybersecurity threats and best practices. Threats evolve constantly. 
+                        Take security training courses, read security blogs, and stay updated. Knowledge is 
+                        your best defense.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">📋</div>
+                    <h3>Understand Your Rights</h3>
+                    <p>
+                        Know that you have rights regarding your data. Be cautious about what personal 
+                        information you share. Only provide necessary information. Don't overshare on social 
+                        media as attackers use this information for targeted attacks.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Reference Checklist -->
+        <div class="checklist-section">
+            <h2 class="section-title">✓ Quick Reference Checklist</h2>
+            <div class="checklist-grid">
+                <div class="checklist-column">
+                    <h3>🚫 Red Flags</h3>
+                    <ul class="checklist">
+                        <li>☐ Generic greeting ("Dear User")</li>
+                        <li>☐ Urgent language or time pressure</li>
+                        <li>☐ Suspicious URL or domain</li>
+                        <li>☐ Request for passwords/credentials</li>
+                        <li>☐ Grammar and spelling errors</li>
+                        <li>☐ Links from unknown sources</li>
+                        <li>☐ Unexpected attachments</li>
+                        <li>☐ Too good to be true offers</li>
+                    </ul>
+                </div>
+                <div class="checklist-column">
+                    <h3>✅ Green Flags</h3>
+                    <ul class="checklist">
+                        <li>☐ Personalized greeting (your name)</li>
+                        <li>☐ Official domain name verified</li>
+                        <li>☐ HTTPS with padlock</li>
+                        <li>☐ Professional layout</li>
+                        <li>☐ Proper spelling and grammar</li>
+                        <li>☐ Relevant to your situation</li>
+                        <li>☐ Contact information provided</li>
+                        <li>☐ Legitimate request or offer</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Test Your Knowledge</h2>
+            <p>Now that you've learned these security best practices, challenge yourself!</p>
+            <div class="cta-buttons">
+                <a href="{{ url_for('quiz') }}" class="btn btn-primary btn-lg">
+                    Take the Quiz
+                </a>
+                <a href="{{ url_for('simulations') }}" class="btn btn-secondary btn-lg">
+                    Try Simulations
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 PhishAware - Cybersecurity Awareness Training Platform</p>
+            <p class="footer-disclaimer">Developed strictly for cybersecurity awareness and educational simulation purposes only.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

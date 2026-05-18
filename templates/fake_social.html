@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Security - PhishAware Simulation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="fake-login-page">
+    <div class="fake-page-container">
+        <!-- Fake Instagram Page -->
+        <div class="fake-social-page">
+            <!-- Header -->
+            <header class="fake-header social-header">
+                <div class="fake-logo">
+                    <span class="logo-text">📸 instagram</span>
+                </div>
+                <div class="fake-nav">
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Help</a>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="fake-main social-main">
+                <section class="fake-login-section">
+                    <div class="alert alert-danger">
+                        <strong>🚨 ACCOUNT SUSPENDED!</strong>
+                        Your Instagram account has been suspended due to suspicious activity.
+                        <br>
+                        <em>You have 24 hours to verify your account or it will be permanently deleted.</em>
+                    </div>
+
+                    <div class="login-container social-login">
+                        <h2>Verify Your Account</h2>
+                        <p class="urgency-text red-text">
+                            ⏰ ACTION REQUIRED: Your account will be permanently deleted in 24 hours unless you verify now!
+                        </p>
+
+                        <form method="POST" action="{{ url_for('social_submit') }}" class="fake-form">
+                            <div class="form-group">
+                                <label for="email">Email Address:</label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    placeholder="Enter your email" 
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="username">Username:</label>
+                                <input 
+                                    type="text" 
+                                    id="username" 
+                                    name="username" 
+                                    placeholder="Enter your username" 
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    placeholder="Enter your password" 
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number:</label>
+                                <input 
+                                    type="tel" 
+                                    id="phone" 
+                                    name="phone" 
+                                    placeholder="Enter your phone number" 
+                                    required
+                                >
+                            </div>
+
+                            <button type="submit" class="btn-fake-submit danger">Verify Account Now</button>
+                        </form>
+
+                        <p class="fake-footer-text">
+                            Your account will be restored immediately after verification.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="fake-info-section">
+                    <h3>Why We're Verifying</h3>
+                    <p>
+                        Instagram regularly checks for suspicious activity to keep your account safe.
+                        This verification process helps us confirm your identity and restore access.
+                    </p>
+                    <p>
+                        <strong>⚠️ Note:</strong> If you don't recognize this activity, it may indicate
+                        someone has unauthorized access to your account.
+                    </p>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <footer class="fake-footer social-footer">
+                <p>&copy; 2026 Instagram. All rights reserved. | <a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Cookies</a></p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Hidden Analysis Banner -->
+    <div class="analysis-hint" style="display: none;">
+        <h3>🔍 Analysis Points:</h3>
+        <ul>
+            <li>Domain: Check if URL is instagram.com or instagram-security.co</li>
+            <li>Urgency: "Account will be deleted in 24 hours" creates pressure</li>
+            <li>Asks for password: Instagram never asks for passwords this way</li>
+            <li>Personal information request: Asking for phone number is suspicious</li>
+            <li>Generic greeting: No personalization with your name</li>
+            <li>Threat language: Uses fear to motivate action</li>
+            <li>Multiple credentials: Asking for email, username, AND password</li>
+        </ul>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

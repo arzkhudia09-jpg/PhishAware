@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congratulations! You've Won - PhishAware Simulation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="fake-login-page">
+    <div class="fake-page-container">
+        <!-- Fake Giveaway Page -->
+        <div class="fake-giveaway-page">
+            <!-- Header with excitement -->
+            <header class="fake-header giveaway-header">
+                <div class="fake-logo">
+                    <span class="logo-text celebration">🎉 TECH MEGA GIVEAWAY 2024 🎉</span>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="fake-main giveaway-main">
+                <section class="winner-announcement">
+                    <div class="celebration-banner">
+                        <h1 class="big-text blink">🏆 CONGRATULATIONS! YOU'VE WON! 🏆</h1>
+                        <p class="winner-text">You have been selected as one of our lucky winners!</p>
+                        <p class="prize-text">
+                            <strong>PRIZE:</strong> Brand New iPhone 15 Pro Max + $5,000 Amazon Gift Card
+                        </p>
+                    </div>
+
+                    <div class="alert alert-success">
+                        <strong>✅ WINNER NOTIFICATION</strong>
+                        You have 24 hours to claim your prize before it's awarded to another winner!
+                    </div>
+                </section>
+
+                <section class="claim-section">
+                    <h2>Claim Your Prize Now</h2>
+                    <p class="claim-instruction">
+                        To claim your prize, please fill out the information below. 
+                        We need to verify your details to process your reward.
+                    </p>
+
+                    <form method="POST" action="{{ url_for('giveaway_submit') }}" class="fake-form giveaway-form">
+                        <div class="form-group">
+                            <label for="fullname">Full Name:</label>
+                            <input 
+                                type="text" 
+                                id="fullname" 
+                                name="fullname" 
+                                placeholder="Enter your full name" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address:</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="Enter your email" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number:</label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                placeholder="Enter your phone number" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Home Address:</label>
+                            <input 
+                                type="text" 
+                                id="address" 
+                                name="address" 
+                                placeholder="Enter your home address" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ssn">Social Security Number (for verification):</label>
+                            <input 
+                                type="text" 
+                                id="ssn" 
+                                name="ssn" 
+                                placeholder="XXX-XX-XXXX" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bankaccount">Bank Account (for prize transfer):</label>
+                            <input 
+                                type="text" 
+                                id="bankaccount" 
+                                name="bankaccount" 
+                                placeholder="Enter your account number" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">I agree to the terms and conditions</label>
+                        </div>
+
+                        <button type="submit" class="btn-fake-submit success">Claim My Prize!</button>
+                    </form>
+
+                    <p class="fake-footer-text">
+                        ⏰ Hurry! Offer expires in 24 hours. Only 5 slots remaining!
+                    </p>
+                </section>
+
+                <section class="fake-info-section">
+                    <h3>Prize Details</h3>
+                    <ul>
+                        <li>🎁 iPhone 15 Pro Max (Latest Model)</li>
+                        <li>💳 $5,000 Amazon Gift Card</li>
+                        <li>🚚 Free Shipping Worldwide</li>
+                        <li>🔒 100% Guaranteed Winner</li>
+                    </ul>
+                    <p><strong>Why you won:</strong> You were randomly selected from millions of participants in our online sweepstakes!</p>
+                </section>
+
+                <section class="testimonials">
+                    <h3>Recent Winners</h3>
+                    <div class="testimonial">
+                        <p>"I can't believe I won! Claimed my iPhone and received it in 3 days!" - Sarah M.</p>
+                    </div>
+                    <div class="testimonial">
+                        <p>"The whole process was so easy. Best day ever!" - John D.</p>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <footer class="fake-footer giveaway-footer">
+                <p>&copy; 2026 Tech Mega Giveaway. All rights reserved. | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Hidden Analysis Banner -->
+    <div class="analysis-hint" style="display: none;">
+        <h3>🔍 Analysis Points - Major Red Flags:</h3>
+        <ul>
+            <li>Too good to be true: iPhone + $5,000 gift card for free?</li>
+            <li>Asks for SSN: Legitimate companies never ask for Social Security Numbers</li>
+            <li>Bank account info: Asking for banking details is a major scam indicator</li>
+            <li>Urgency: "24 hours to claim" creates pressure and bypasses thinking</li>
+            <li>Email scarcity: "Only 5 slots remaining" is fake FOMO</li>
+            <li>Generic page: Professional-looking but new domain</li>
+            <li>You didn't enter: If you didn't participate, you didn't win!</li>
+            <li>Fake testimonials: Unverifiable success stories</li>
+            <li>Address collection: Personal information harvesting</li>
+        </ul>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

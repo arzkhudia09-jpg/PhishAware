@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishAware - Phishing Awareness Simulator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="terminal-bracket">[</span>
+                <span class="brand-text">PhishAware</span>
+                <span class="terminal-bracket">]</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="{{ url_for('dashboard') }}" class="nav-link">Learn</a></li>
+                <li><a href="{{ url_for('tips') }}" class="nav-link">Tips</a></li>
+                <li><a href="{{ url_for('simulations') }}" class="nav-link btn-nav">Start</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Can You Detect a Phishing Attack Before It's Too Late?
+                </h1>
+                <p class="hero-subtitle">
+                    Interactive cybersecurity training platform. Learn to recognize and prevent phishing attacks through realistic simulations.
+                </p>
+                <div class="hero-buttons">
+                    <a href="{{ url_for('simulations') }}" class="btn btn-primary btn-lg">
+                        <span class="btn-icon">▶</span> Start Simulation
+                    </a>
+                    <a href="{{ url_for('quiz') }}" class="btn btn-secondary btn-lg">
+                        <span class="btn-icon">📝</span> Take Quiz
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="terminal-animation">
+                    <div class="terminal-line">$ scanning_network...</div>
+                    <div class="terminal-line">$ detecting_threats...</div>
+                    <div class="terminal-line green-text">✓ PhishAware_active</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Animated warning banner -->
+        <div class="warning-banner">
+            <span class="warning-icon">⚠</span>
+            <span class="warning-text">PHISHING ATTACK DETECTED - EDUCATIONAL SIMULATION IN PROGRESS</span>
+            <span class="warning-icon">⚠</span>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <h2 class="section-title">Why Phishing Awareness Matters</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">90%</div>
+                <p class="stat-label">of data breaches involve phishing</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">$3.8B</div>
+                <p class="stat-label">lost annually to phishing attacks</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1 in 3</div>
+                <p class="stat-label">employees fall for phishing emails</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4.7s</div>
+                <p class="stat-label">average time to click malicious link</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <h2 class="section-title">Learning Modules</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Realistic Simulations</h3>
+                <p>Practice identifying phishing attacks with genuine-looking educational simulations</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>Interactive Learning</h3>
+                <p>Learn about phishing tactics, social engineering, and attack vectors</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Security Tips</h3>
+                <p>Best practices to protect yourself from phishing and cyber threats</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>Knowledge Quiz</h3>
+                <p>Test your phishing detection skills with our comprehensive quiz</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>URL Analysis</h3>
+                <p>Advanced tools to analyze suspicious URLs and emails for phishing indicators</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Dashboard</h3>
+                <p>Understand different types of attacks and their prevention methods</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Educational Disclaimer -->
+    <section class="disclaimer-section">
+        <div class="disclaimer-box">
+            <h3>🔒 Security & Ethics Notice</h3>
+            <p>
+                <strong>PhishAware</strong> is developed strictly for cybersecurity awareness and educational simulation purposes only. 
+                This platform is designed to help users learn to identify and protect themselves from phishing attacks.
+            </p>
+            <ul class="disclaimer-list">
+                <li>✓ No credentials are stored</li>
+                <li>✓ No personal data is transmitted</li>
+                <li>✓ All simulations are purely educational</li>
+                <li>✓ No harmful functionality</li>
+                <li>✓ Safe learning environment</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 PhishAware - Cybersecurity Awareness Training Platform</p>
+            <p class="footer-disclaimer">Developed strictly for cybersecurity awareness and educational simulation purposes only.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

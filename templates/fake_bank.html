@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Login - PhishAware Simulation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="fake-login-page">
+    <div class="fake-page-container">
+        <!-- Fake Bank Page -->
+        <div class="fake-bank-page">
+            <!-- Header -->
+            <header class="fake-header bank-header">
+                <div class="fake-logo">
+                    <span class="logo-text">🏦 SecureBank</span>
+                </div>
+                <div class="fake-nav">
+                    <a href="#">Home</a>
+                    <a href="#">Services</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Support</a>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="fake-main">
+                <section class="fake-login-section">
+                    <div class="alert alert-warning">
+                        <strong>⚠️ SECURITY ALERT!</strong>
+                        Your account needs verification. Please log in to confirm your identity.
+                        <br>
+                        <em>This request will expire in 2 hours.</em>
+                    </div>
+
+                    <div class="login-container">
+                        <h2>Account Verification Required</h2>
+                        <p class="urgency-text">
+                            Due to unusual activity detected on your account, we need you to verify your identity immediately.
+                        </p>
+
+                        <form method="POST" action="{{ url_for('bank_submit') }}" class="fake-form">
+                            <div class="form-group">
+                                <label for="username">Username or Email:</label>
+                                <input 
+                                    type="text" 
+                                    id="username" 
+                                    name="username" 
+                                    placeholder="Enter your email or username" 
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    placeholder="Enter your password" 
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pin">Security PIN (4 digits):</label>
+                                <input 
+                                    type="text" 
+                                    id="pin" 
+                                    name="pin" 
+                                    placeholder="Enter your PIN" 
+                                    maxlength="4"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group checkbox">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">Remember me on this device</label>
+                            </div>
+
+                            <button type="submit" class="btn-fake-submit">Verify Account</button>
+                        </form>
+
+                        <p class="fake-footer-text">
+                            For your security, this page uses HTTPS encryption.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="fake-info-section">
+                    <h3>Security Information</h3>
+                    <p>
+                        We take your security seriously. If you did not attempt to access your account,
+                        please contact our support team immediately at 1-800-BANK-247.
+                    </p>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <footer class="fake-footer bank-footer">
+                <p>&copy; 2026 SecureBank. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms</a></p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Hidden Analysis Banner (for reference) -->
+    <div class="analysis-hint" style="display: none;">
+        <h3>🔍 Analysis Points:</h3>
+        <ul>
+            <li>URL: Check if it's actually securebank.com or something like secure-bank-verify.xyz</li>
+            <li>Domain: Look at the actual domain - phishing sites often have extra words</li>
+            <li>Generic greeting: No personalization with your name</li>
+            <li>Urgency: "Verify immediately" and time pressure tactics</li>
+            <li>Asks for passwords: Banks never ask for passwords via web forms</li>
+            <li>Multiple forms of ID: Asking for PIN + Password is suspicious</li>
+        </ul>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

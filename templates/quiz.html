@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - PhishAware</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit;">
+                    <span class="terminal-bracket">[</span>
+                    <span class="brand-text">PhishAware</span>
+                    <span class="terminal-bracket">]</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+                <li><a href="{{ url_for('dashboard') }}" class="nav-link">Learn</a></li>
+                <li><a href="{{ url_for('tips') }}" class="nav-link">Tips</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Quiz Section -->
+    <section class="quiz-section">
+        <div class="quiz-container">
+            <!-- Quiz Header -->
+            <div class="quiz-header" id="quizHeader">
+                <h1>🧠 Phishing Awareness Quiz</h1>
+                <p>Test your knowledge of phishing detection and cybersecurity!</p>
+                <button class="btn btn-primary" id="startQuizBtn">Start Quiz</button>
+            </div>
+            <!-- Progress Bar -->
+            <div class="progress-container" id="progressContainer" style="display: none;">
+                <div class="progress-info">
+                    <span id="currentQuestion">0</span> / <span id="totalQuestions">0</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+            <!-- Quiz Content -->
+            <div class="quiz-content" id="quizContent" style="display: none;">
+                <div class="question-card" id="questionCard">
+                    <h3 class="question-text" id="questionText"></h3>
+                    <div class="options" id="optionsContainer"></div>
+                </div>
+                <!-- Answer Feedback -->
+                <div class="feedback-box" id="feedbackBox" style="display: none;">
+                    <div class="feedback-content" id="feedbackContent"></div>
+                    <button class="btn btn-primary" id="nextQuestionBtn">Next Question</button>
+                </div>
+            </div>
+            <!-- Quiz Results -->
+            <div class="quiz-results" id="quizResults" style="display: none;">
+                <div class="results-header success-banner">
+                    <h2>🎉 Quiz Complete!</h2>
+                </div>
+                <div class="results-content">
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <span id="finalScore">0</span>%
+                        </div>
+                    </div>
+                    <p class="score-message" id="scoreMessage"></p>
+                    <div class="results-breakdown">
+                        <p><strong>Questions Answered:</strong> <span id="answeredCount">0</span></p>
+                        <p><strong>Correct Answers:</strong> <span id="correctCount">0</span></p>
+                        <p><strong>Accuracy:</strong> <span id="accuracyPercent">0</span>%</p>
+                    </div>
+                    <!-- Detailed Results -->
+                    <div class="detailed-results" id="detailedResults"></div>
+                    <!-- Certificate Button -->
+                    <div class="results-actions">
+                        <a href="{{ url_for('certificate') }}" class="btn btn-success btn-lg" id="certificateBtn"
+                            style="display: none;"> 📜 Get Certificate </a>
+                        <button class="btn btn-secondary btn-lg" onclick="location.reload()"> Retake Quiz </button>
+                        <a href="{{ url_for('simulations') }}" class="btn btn-primary btn-lg"> Try Simulations </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 PhishAware - Cybersecurity Awareness Training Platform</p>
+            <p class="footer-disclaimer">Developed strictly for cybersecurity awareness and educational simulation
+                purposes only.</p>
+        </div>
+    </footer>
+    <script>
+        // Quiz data will be passed from Flask
+        const quizData = JSON.parse('{{ quiz_data | safe }}');
+    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
