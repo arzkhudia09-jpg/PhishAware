@@ -4,8 +4,8 @@
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![Flask](https://img.shields.io/badge/Flask-2.3.3-blue)
+![Python](https://img.shields.io/badge/Python-3.13%2B-blue)
+![Flask](https://img.shields.io/badge/Flask-3.0.0-blue)
 
 ## ⚠️ Important Disclaimer
 
