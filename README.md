@@ -6,6 +6,11 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Python](https://img.shields.io/badge/Python-3.13%2B-blue)
 ![Flask](https://img.shields.io/badge/Flask-3.0.0-blue)
+![Live Demo](https://img.shields.io/badge/demo-phishaware--2dwn.onrender.com-brightgreen)
+
+## 🔗 Live Demo
+
+Try the live app at: https://phishaware-2dwn.onrender.com
 
 ## ⚠️ Important Disclaimer
 
@@ -35,6 +40,11 @@ PhishAware is a modern, interactive web application designed to educate users ab
   - Progress tracking
   - Score calculation with 70% pass threshold
   - Certificate generation for passing users
+
+- **📘 Enhanced Learning Experience**
+  - Polished educational dashboard for faster comprehension
+  - Readable, bite-sized security advice on the tips page
+  - Improved visual flow and attention-guiding content blocks
 
 - **🛡️ Security Tools**
   - URL Safety Checker - Analyze URLs for suspicious patterns

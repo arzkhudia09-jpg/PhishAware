@@ -963,6 +963,255 @@ section:nth-child(even) {
     margin-bottom: 1rem;
 }
 
+.dashboard-grid,
+.tips-grid {
+    display: grid;
+    gap: 1.75rem;
+}
+
+.dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.attack-card,
+.tip-card,
+.checklist-column,
+.stat-box {
+    background: linear-gradient(180deg, rgba(10, 14, 39, 0.96) 0%, rgba(26, 31, 58, 0.92) 100%);
+    border: 1px solid rgba(0, 255, 65, 0.18);
+    border-radius: 18px;
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.24);
+    padding: 2rem;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.attack-card:hover,
+.tip-card:hover,
+.checklist-column:hover,
+.stat-box:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0, 255, 65, 0.45);
+    box-shadow: 0 32px 80px rgba(0, 255, 65, 0.16);
+}
+
+.attack-card .card-header,
+.attack-card h3,
+.attack-card .attack-example,
+.attack-card .attack-flow,
+.attack-card .attack-flow .flow-step,
+.attack-card .flow-arrow {
+    width: 100%;
+}
+
+.attack-card h3 {
+    font-size: 1.35rem;
+    color: var(--neon-green);
+}
+
+.threat-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: rgba(255, 23, 68, 0.12);
+    color: var(--danger-red);
+    border: 1px solid rgba(255, 23, 68, 0.22);
+}
+
+.threat-badge.medium {
+    background: rgba(255, 152, 0, 0.12);
+    color: var(--warning-orange);
+    border-color: rgba(255, 152, 0, 0.22);
+}
+
+.threat-badge.critical {
+    background: rgba(255, 23, 68, 0.18);
+    color: var(--danger-red);
+    border-color: rgba(255, 23, 68, 0.30);
+}
+
+.attack-example {
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 14px;
+    background: rgba(0, 255, 255, 0.06);
+    border: 1px dashed rgba(0, 255, 255, 0.18);
+    color: var(--text-secondary);
+}
+
+.attack-flow {
+    display: grid;
+    gap: 0.75rem;
+    margin: 1rem 0 1.5rem;
+}
+
+.flow-step {
+    padding: 0.9rem 1rem;
+    border-radius: 14px;
+    background: rgba(0, 255, 65, 0.08);
+    color: var(--text-primary);
+    font-weight: 600;
+    border-left: 4px solid var(--neon-green);
+}
+
+.flow-arrow {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.attack-card h4,
+.attack-card .prevention-methods h4 {
+    margin-top: 1.4rem;
+    color: var(--neon-green);
+}
+
+.prevention-methods,
+.checklist {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: grid;
+    gap: 0.8rem;
+}
+
+.prevention-methods li,
+.checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.prevention-methods li::before,
+.checklist li::before {
+    content: '•';
+    color: var(--neon-green);
+    margin-top: 0.2rem;
+    font-size: 1.1rem;
+}
+
+.statistics-section {
+    margin-top: 3rem;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 2rem;
+}
+
+.stat-box .stat-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--neon-green);
+    margin-bottom: 0.8rem;
+}
+
+.stat-box p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.cta-section {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.cta-section h2 {
+    color: var(--neon-green);
+    margin-bottom: 0.75rem;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.category-title {
+    font-size: 1.9rem;
+    color: var(--neon-blue);
+    margin-bottom: 1.2rem;
+    text-shadow: 0 0 12px rgba(0, 255, 255, 0.18);
+}
+
+.tip-icon {
+    width: 58px;
+    height: 58px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 255, 65, 0.10);
+    color: var(--neon-green);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.tip-card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.tip-example {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 14px;
+    background: rgba(0, 255, 255, 0.07);
+    border: 1px dashed rgba(0, 255, 255, 0.18);
+    color: var(--text-secondary);
+}
+
+.checklist-section {
+    margin-top: 3rem;
+}
+
+.checklist-grid {
+    display: grid;
+    gap: 1.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.checklist-column {
+    padding: 1.75rem;
+}
+
+.checklist-column h3 {
+    color: var(--neon-green);
+    margin-bottom: 1rem;
+}
+
+.checklist {
+    background: transparent;
+}
+
+.checklist li {
+    padding-left: 0.25rem;
+}
+
+.tips-intro,
+.learn-intro {
+    background: rgba(0, 255, 65, 0.08);
+    border: 1px solid rgba(0, 255, 65, 0.18);
+    border-radius: 18px;
+    padding: 1.5rem 1.75rem;
+    margin: 0 auto 2rem;
+    max-width: 980px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.tips-intro p,
+.learn-intro p {
+    margin: 0;
+}
+
 @media (max-width: 720px) {
     .section-title {
         font-size: 1.85rem;
