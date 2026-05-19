@@ -99,6 +99,22 @@ nav {
     align-items: center;
 }
 
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--neon-green);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.menu-toggle:hover {
+    color: var(--neon-green-dim);
+}
+
 .nav-links a {
     color: var(--text-primary);
     text-decoration: none;
@@ -1881,10 +1897,143 @@ footer {
     RESPONSIVE DESIGN
     */
 
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .nav-container {
+        padding: 0.9rem 1.5rem;
+    }
+
+    section {
+        padding: 3rem 0;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+}
+
 @media (max-width: 768px) {
+    /* Navigation - Mobile Menu */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(10, 14, 39, 0.98);
+        border-bottom: 1px solid rgba(0, 255, 65, 0.18);
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        display: none;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(0, 255, 65, 0.1);
+    }
+
+    .nav-container {
+        padding: 0.9rem 1rem;
+    }
+
+    .nav-brand {
+        font-size: 1.1rem;
+    }
+
+    /* Typography - Mobile */
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .section-title::after {
+        width: 80px;
+    }
+
+    .section-header h1,
+    .awareness-header h1 {
+        font-size: 2rem;
+    }
+
+    .section-subtitle,
+    .awareness-subtitle {
+        font-size: 0.95rem;
+    }
+
+    /* Hero Section - Mobile */
+    .hero {
+        min-height: 70vh;
+        padding: 2rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        line-height: 1.3;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .btn-lg {
+        padding: 0.85rem 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .terminal-animation {
+        width: 100%;
+        padding: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .hero::before {
+        width: 150px;
+        height: 150px;
+    }
+
+    .hero::after {
+        width: 200px;
+        height: 200px;
+    }
+
+    /* Container & Sections */
     nav {
         flex-direction: column;
         gap: 1rem;
+        padding: 0 1rem;
     }
 
     .nav-links {
@@ -1892,60 +2041,455 @@ footer {
         flex-wrap: wrap;
     }
 
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero p {
-        font-size: 1.1rem;
-    }
-
-    .grid-2,
-    .grid-3,
-    .grid-4 {
-        grid-template-columns: 1fr;
+    .container {
+        padding: 0 1rem;
     }
 
     section {
         padding: 2rem 0;
     }
 
-    .container {
-        padding: 0 1rem;
+    /* Grids - Single Column on Mobile */
+    .stats-grid,
+    .features-grid,
+    .simulations-grid,
+    .resources-grid,
+    .red-flags-grid,
+    .lessons-grid,
+    .next-steps-grid,
+    .url-comparison-grid,
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .dashboard-grid,
+    .checklist-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
     }
 
-    .hero::before {
-        width: 200px;
-        height: 200px;
-    }
-
-    .hero::after {
-        width: 250px;
-        height: 250px;
-    }
-
-    .stats-container {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1rem;
+    /* Cards - Mobile */
+    .stat-card,
+    .feature-card,
+    .simulation-card,
+    .resource-card,
+    .red-flag-card,
+    .lesson-card,
+    .next-step-card,
+    .threat-card,
+    .success-box,
+    .instructions-box,
+    .disclaimer-box,
+    .url-box,
+    .card {
+        padding: 1.25rem;
     }
 
     .stat-number {
         font-size: 2rem;
     }
 
+    .stat-label {
+        font-size: 0.9rem;
+    }
+
+    /* Cards Details */
+    .card-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .simulation-card .card-title {
+        font-size: 1.3rem;
+    }
+
+    .simulation-card .card-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.2rem;
+    }
+
+    /* Feature Icons */
+    .feature-icon,
+    .resource-icon,
+    .step-icon,
+    .flag-icon,
+    .lesson-number,
+    .tip-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.2rem;
+    }
+
+    /* Forms */
+    form {
+        padding: 1.25rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 0.65rem;
+        font-size: 0.9rem;
+    }
+
     .radio-group,
     .checkbox-group {
         flex-direction: column;
-        gap: 1rem;
+        gap: 0.75rem;
     }
 
+    /* Quiz */
+    .quiz-container {
+        max-width: 100%;
+    }
+
+    .question-card {
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .question-text {
+        font-size: 1.1rem;
+    }
+
+    .options {
+        gap: 0.6rem;
+    }
+
+    .option {
+        padding: 0.85rem;
+        font-size: 0.9rem;
+    }
+
+    /* Alert Box */
+    .alert {
+        padding: 0.75rem;
+        gap: 0.75rem;
+    }
+
+    .alert-icon {
+        font-size: 1.1rem;
+    }
+
+    /* Footer */
     footer {
-        padding: 1rem 0;
+        padding: 1.5rem 0;
+    }
+
+    .footer-content {
+        padding: 0 1rem;
     }
 
     .footer-links {
         flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .footer-links a {
+        font-size: 0.9rem;
+    }
+
+    .footer-disclaimer {
+        font-size: 0.8rem;
+        padding: 0.75rem;
+    }
+
+    /* Certificate */
+    .certificate {
+        padding: 1.5rem;
+        max-width: calc(100% - 1rem);
+        margin: 1.5rem auto;
+    }
+
+    .certificate-header {
+        font-size: 1.2rem;
+    }
+
+    .certificate-text {
+        font-size: 1rem;
+    }
+
+    .certificate-name {
+        font-size: 1.5rem;
+    }
+
+    /* Stats Container */
+    .stats-container {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 0.75rem;
+    }
+
+    .stat-number {
+        font-size: 1.75rem;
+    }
+
+    /* Attack Card */
+    .attack-card {
+        padding: 1.25rem;
+    }
+
+    .attack-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .attack-card h4 {
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+
+    /* URL Bar */
+    .fake-url-bar {
+        font-size: 0.75rem;
+        padding: 0.75rem;
+    }
+
+    /* Red Flags */
+    .red-flags-container {
+        grid-template-columns: 1fr;
         gap: 1rem;
+    }
+
+    .red-flag-item {
+        padding: 1rem;
+    }
+
+    /* Hero Buttons */
+    .hero-buttons {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    /* Warning Banner */
+    .warning-banner {
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+        gap: 0.5rem;
+    }
+
+    .warning-banner-icon {
+        font-size: 1rem;
+    }
+
+    .warning-text {
+        letter-spacing: 0.3px;
+    }
+
+    /* List Items */
+    .instructions-list li,
+    .prevention-list li,
+    .prevention-methods li,
+    .checklist li {
+        padding-left: 1.8rem;
+        font-size: 0.9rem;
+    }
+
+    /* Tip Card */
+    .tip-card .tip-label {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.7rem;
+    }
+
+    /* CTA Section */
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .cta-buttons .btn {
+        width: 100%;
+    }
+
+    /* Category Title */
+    .category-title {
+        font-size: 1.5rem;
+    }
+
+    /* Difficulty Badge */
+    .difficulty-badge,
+    .threat-level,
+    .time-estimate,
+    .skill-tag {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.65rem;
+    }
+
+    /* Progress Bar */
+    .progress-info {
+        font-size: 0.9rem;
+    }
+
+    .progress-bar {
+        height: 12px;
+    }
+
+    /* Section Headers */
+    .section-header,
+    .awareness-header {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Learn & Tips Intro */
+    .tips-intro,
+    .learn-intro {
+        padding: 1rem;
+        margin: 0 auto 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Awareness Container */
+    .awareness-container {
+        gap: 1.25rem;
+    }
+
+    /* Card Skills */
+    .card-skills {
+        gap: 0.5rem;
+    }
+
+    /* Lesson Meta */
+    .lesson-meta {
+        gap: 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    /* Fake Login Container */
+    .fake-login-container {
+        max-width: 100%;
+        margin: 30px 1rem;
+        padding: 1.5rem;
+    }
+
+    .fake-logo {
+        font-size: 1.5rem;
+    }
+
+    .urgency-message {
+        font-size: 0.8rem;
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Extreme small screens */
+    .nav-brand {
+        font-size: 0.95rem;
+        gap: 0.25rem;
+    }
+
+    .terminal-bracket {
+        font-size: 0.9rem;
+    }
+
+    .brand-text {
+        letter-spacing: 0.5px;
+    }
+
+    .hero {
+        min-height: 60vh;
+    }
+
+    .hero h1 {
+        font-size: 1.6rem;
+        line-height: 1.2;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .btn {
+        padding: 0.65rem 0.9rem;
+        font-size: 0.85rem;
+        border-radius: 4px;
+    }
+
+    .btn-lg {
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .section-header h1,
+    .awareness-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .terminal-animation {
+        padding: 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .terminal-line {
+        margin-bottom: 0.6rem;
+    }
+
+    .question-card {
+        padding: 1rem;
+    }
+
+    .question-text {
+        font-size: 1rem;
+    }
+
+    .option {
+        padding: 0.75rem;
+    }
+
+    .fake-login-container {
+        margin: 20px 0.5rem;
+        padding: 1.25rem;
+    }
+
+    .awareness-title {
+        font-size: 1.8rem;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    /* Responsive Button Icons */
+    .btn-icon {
+        margin-right: 0.25rem;
+    }
+
+    /* Hide long text on very small screens */
+    .warning-text {
+        font-size: 0.8rem;
+    }
+
+    /* Navbar improvements */
+    nav {
+        gap: 0.5rem;
+    }
+
+    /* Form improvements */
+    form {
+        padding: 1rem;
+    }
+
+    /* List improvements */
+    .instructions-list li,
+    .prevention-list li {
+        padding-left: 1.5rem;
+        font-size: 0.85rem;
+    }
+
+    /* Attack example */
+    .attack-example {
+        padding: 0.75rem;
+        font-size: 0.8rem;
     }
 }
 

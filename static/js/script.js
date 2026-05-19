@@ -27,7 +27,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Smooth scroll for navigation
   setupSmoothScroll();
+
+  // Mobile menu toggle
+  setupMobileMenu();
 });
+
+// ==========================================
+// MOBILE MENU TOGGLE
+// ==========================================
+function setupMobileMenu() {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function () {
+      navLinks.classList.toggle('active');
+      // Toggle hamburger animation
+      menuToggle.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    const navItems = navLinks.querySelectorAll('a');
+    navItems.forEach(item => {
+      item.addEventListener('click', function () {
+        navLinks.classList.remove('active');
+        menuToggle.classList.remove('active');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('nav')) {
+        navLinks.classList.remove('active');
+        menuToggle.classList.remove('active');
+      }
+    });
+  }
+}
 
 // ==========================================
 // QUIZ FUNCTIONALITY
