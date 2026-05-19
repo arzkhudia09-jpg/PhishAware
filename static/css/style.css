@@ -1,7 +1,7 @@
-/* ==========================================
-   PhishAware - CSS Stylesheet
-   Dark Cybersecurity Theme with Neon Green Accents
-   ========================================== */
+/* 
+    PhishAware - CSS Stylesheet
+    Dark Cybersecurity Theme with Neon Green Accents
+    */
 
 :root {
     --primary-dark: #0a0e27;
@@ -38,9 +38,9 @@ body {
     overflow-x: hidden;
 }
 
-/* ==========================================
-   SCROLLBAR STYLING
-   ========================================== */
+/* 
+    SCROLLBAR STYLING
+    */
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -59,9 +59,9 @@ body {
     background: var(--neon-green-dim);
 }
 
-/* ==========================================
-   HEADER & NAVIGATION
-   ========================================== */
+/* 
+    HEADER & NAVIGATION
+    */
 
 header {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
@@ -174,9 +174,9 @@ nav {
     background-color: rgba(0, 255, 65, 0.22);
 }
 
-/* ==========================================
-   BUTTONS
-   ========================================== */
+/* 
+    BUTTONS
+    */
 
 .btn {
     padding: 0.75rem 1.5rem;
@@ -251,9 +251,9 @@ nav {
     width: 100%;
 }
 
-/* ==========================================
-   CONTAINERS & SECTIONS
-   ========================================== */
+/* 
+    CONTAINERS & SECTIONS
+    */
 
 .container {
     max-width: 1200px;
@@ -273,9 +273,9 @@ section:nth-child(even) {
     background-color: var(--secondary-dark);
 }
 
-/* ==========================================
-   HERO SECTION
-   ========================================== */
+/* 
+    HERO SECTION
+    */
 
 .hero {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 50%, var(--tertiary-dark) 100%);
@@ -391,9 +391,9 @@ section:nth-child(even) {
     letter-spacing: 0.5px;
 }
 
-/* ==========================================
-   STATISTICS SECTION
-   ========================================== */
+/* 
+    STATISTICS SECTION
+    */
 
 .stats-container {
     display: grid;
@@ -889,9 +889,9 @@ section:nth-child(even) {
     margin-bottom: 0.5rem;
 }
 
-/* ==========================================
-   LEARN & TIPS PAGE STYLING
-   ========================================== */
+/* 
+    LEARN & TIPS PAGE STYLING
+    */
 
 .lessons-section,
 .tips-section {
@@ -1231,9 +1231,9 @@ section:nth-child(even) {
     }
 }
 
-/* ==========================================
-   CARD COMPONENTS
-   ========================================== */
+/* 
+    CARD COMPONENTS
+    */
 
 .card {
     background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--tertiary-dark) 100%);
@@ -1302,9 +1302,9 @@ section:nth-child(even) {
     border: 1px solid var(--danger-red);
 }
 
-/* ==========================================
-   GRID LAYOUTS
-   ========================================== */
+/* 
+    GRID LAYOUTS
+    */
 
 .grid {
     display: grid;
@@ -1323,9 +1323,9 @@ section:nth-child(even) {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-/* ==========================================
-   FORMS
-   ========================================== */
+/* 
+    FORMS
+    */
 
 form {
     background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--tertiary-dark) 100%);
@@ -1397,9 +1397,9 @@ input[type='checkbox'] {
     accent-color: var(--neon-green);
 }
 
-/* ==========================================
-   ALERTS & MESSAGES
-   ========================================== */
+/* 
+    ALERTS & MESSAGES
+    */
 
 .alert {
     padding: 1rem;
@@ -1440,9 +1440,9 @@ input[type='checkbox'] {
     color: var(--neon-blue);
 }
 
-/* ==========================================
-   QUIZ PROGRESS BAR
-========================================== */
+/* 
+    QUIZ PROGRESS BAR
+ */
 
 .progress-container {
     width: 100%;
@@ -1485,9 +1485,9 @@ input[type='checkbox'] {
     box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
 }
 
-/* ==========================================
-   QUIZ STYLES
-   ========================================== */
+/* 
+    QUIZ STYLES
+    */
 
 .quiz-container {
     max-width: 700px;
@@ -1597,9 +1597,9 @@ input[type='checkbox'] {
     color: var(--danger-red);
 }
 
-/* ==========================================
-   PHISHING SIMULATION PAGES
-   ========================================== */
+/* 
+    PHISHING SIMULATION PAGES
+    */
 
 .phishing-page {
     background: #ffffff;
@@ -1712,9 +1712,9 @@ input[type='checkbox'] {
     color: var(--danger-red);
 }
 
-/* ==========================================
-   CERTIFICATE
-   ========================================== */
+/* 
+    CERTIFICATE
+    */
 
 .certificate {
     background: linear-gradient(135deg, #fff8dc 0%, #fffacd 100%);
@@ -1756,9 +1756,9 @@ input[type='checkbox'] {
     margin-top: 1rem;
 }
 
-/* ==========================================
-   FOOTER
-   ========================================== */
+/* 
+    FOOTER
+    */
 
 footer {
     background-color: var(--secondary-dark);
@@ -1803,9 +1803,9 @@ footer {
     text-shadow: 0 0 10px var(--neon-green);
 }
 
-/* ==========================================
-   ANIMATIONS
-   ========================================== */
+/* 
+    ANIMATIONS
+    */
 
 @keyframes slideUp {
     from {
@@ -1877,9 +1877,9 @@ footer {
     }
 }
 
-/* ==========================================
-   RESPONSIVE DESIGN
-   ========================================== */
+/* 
+    RESPONSIVE DESIGN
+    */
 
 @media (max-width: 768px) {
     nav {
@@ -1973,9 +1973,9 @@ footer {
     }
 }
 
-/* ==========================================
-   ACCESSIBILITY
-   ========================================== */
+/* 
+    ACCESSIBILITY
+    */
 
 @media (prefers-reduced-motion: reduce) {
     * {
@@ -1990,9 +1990,9 @@ footer {
     }
 }
 
-/* ==========================================
-   UTILITY CLASSES
-   ========================================== */
+/* 
+    UTILITY CLASSES
+    */
 
 .text-center {
     text-align: center;
@@ -2070,9 +2070,9 @@ footer {
     opacity: 0.75;
 }
 
-/* ==========================================
-   PRINT STYLES
-========================================== */
+/* 
+    PRINT STYLES
+ */
 
 @media print {
 

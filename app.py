@@ -28,9 +28,7 @@ def load_quiz_data():
         return {"questions": []}
 
 
-# ============================================================
 # MAIN ROUTES
-# ============================================================
 
 
 @app.route("/")
@@ -67,9 +65,7 @@ def quiz():
     return render_template("quiz.html", quiz_data=quiz_data)
 
 
-# ============================================================
 # PHISHING SIMULATION ROUTES
-# ============================================================
 
 
 @app.route("/simulate/bank")
@@ -90,38 +86,28 @@ def simulate_giveaway():
     return render_template("fake_giveaway.html")
 
 
-# ============================================================
-# PHISHING SUBMISSION ROUTES (Don't store data - redirect to awareness)
-# ============================================================
+# PHISHING SUBMISSION ROUTES - DO NOT STORE CREDENTIALS, JUST REDIRECT TO AWARENESS
 
 
 @app.route("/phishing/bank-submit", methods=["POST"])
 def bank_submit():
     """Handle fake bank form submission - NEVER store credentials"""
-    # Do NOT process or store form data
-    # Simply redirect to awareness page
     return redirect(url_for("awareness", sim="bank"))
 
 
 @app.route("/phishing/social-submit", methods=["POST"])
 def social_submit():
     """Handle fake social form submission - NEVER store credentials"""
-    # Do NOT process or store form data
-    # Simply redirect to awareness page
     return redirect(url_for("awareness", sim="social"))
 
 
 @app.route("/phishing/giveaway-submit", methods=["POST"])
 def giveaway_submit():
     """Handle fake giveaway form submission - NEVER store data"""
-    # Do NOT process or store form data
-    # Simply redirect to awareness page
     return redirect(url_for("awareness", sim="giveaway"))
 
 
-# ============================================================
 # AWARENESS & EDUCATION ROUTES
-# ============================================================
 
 
 @app.route("/awareness")
@@ -191,9 +177,7 @@ def certificate():
     return render_template("certificate.html")
 
 
-# ============================================================
 # API ROUTES FOR ADVANCED FEATURES
-# ============================================================
 
 
 @app.route("/api/check-url", methods=["POST"])
@@ -306,9 +290,7 @@ def analyze_email():
     )
 
 
-# ============================================================
 # ERROR HANDLERS
-# ============================================================
 
 
 @app.errorhandler(404)
@@ -323,11 +305,7 @@ def internal_error(e):
     return render_template("index.html"), 500
 
 
-# ============================================================
 # RUN APPLICATION
-# ============================================================
 
 if __name__ == "__main__":
-    # Development server
-    # For production, use Gunicorn: gunicorn app:app
     app.run(debug=False, host="0.0.0.0", port=5000)
